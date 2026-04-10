@@ -1,0 +1,1740 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Element</name>
+    </assembly>
+    <members>
+        <member name="F:Element.AnimationStatus.Begin">
+            <summary>
+            动画开始
+            </summary>
+        </member>
+        <member name="F:Element.AnimationStatus.End">
+            <summary>
+            动画结束
+            </summary>
+        </member>
+        <member name="P:Element.BBadge.Type">
+            <summary>
+            Badge 类型
+            </summary>
+        </member>
+        <member name="P:Element.BButton.Text">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="P:Element.BButton.Image">
+            <summary>
+            按钮图片
+            </summary>
+        </member>
+        <member name="P:Element.BButton.HoverImage">
+            <summary>
+            鼠标放上去时的按钮图片
+            </summary>
+        </member>
+        <member name="P:Element.BButton.ClickImage">
+            <summary>
+            鼠标点击时的按钮图片
+            </summary>
+        </member>
+        <member name="P:Element.BButton.AppendCustomCls">
+            <summary>
+            是否将自定义的 CSS 类加入到已有 CSS 类，如果为 false，则替换掉默认 CSS 类，默认为 true
+            </summary>
+        </member>
+        <member name="P:Element.BCard.BodyCls">
+            <summary>
+            Body 上的 Class 类
+            </summary>
+        </member>
+        <member name="P:Element.BCard.Shadow">
+            <summary>
+            阴影类型
+            </summary>
+        </member>
+        <member name="P:Element.BCheckBox`1.CheckBoxGroup">
+            <summary>
+            如果该 <seealso cref="T:Element.BCheckBox`1"/> 在 <seealso cref="T:Element.BCheckBoxGroup`1"/> 中，则此属性获取 <seealso cref="T:Element.BCheckBoxGroup`1"/> 的值
+            </summary>
+        </member>
+        <member name="P:Element.BComponentBase.EnableAlwaysRender">
+            <summary>
+            若该项为 true，则该组件会始终允许刷新，不受 <seealso cref="M:Element.BComponentBase.MarkAsRequireRender"/> 方法控制
+            </summary>
+        </member>
+        <member name="P:Element.BComponentBase.Cls">
+            <summary>
+            自定义 CSS 类
+            </summary>
+        </member>
+        <member name="P:Element.BComponentBase.Style">
+            <summary>
+            设置自定义样式
+            </summary>
+        </member>
+        <member name="M:Element.BComponentBase.Alert(System.String)">
+            <summary>
+            弹出 Alert 消息
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:Element.BComponentBase.ConfirmAsync(System.String)">
+            <summary>
+            弹出 Confirm 消息
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:Element.BComponentBase.MarkAsRequireRender">
+            <summary>
+            默认情况下所有复杂组件都只进行一次渲染，该方法将组件置为需要再次渲染
+            </summary>
+        </member>
+        <member name="P:Element.BDatePicker.Format">
+            <summary>
+            显示的日期格式
+            </summary>
+        </member>
+        <member name="P:Element.BDatePicker.Placeholder">
+            <summary>
+            Placeholder
+            </summary>
+        </member>
+        <member name="P:Element.BDatePicker.PrefixIcon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:Element.BDatePicker.Cls">
+            <summary>
+            输入框样式类，一般请不要设置该属性
+            </summary>
+        </member>
+        <member name="P:Element.BDatePicker.Date">
+            <summary>
+            获取选择的日期
+            </summary>
+        </member>
+        <member name="P:Element.BDatePicker.DateChanged">
+            <summary>
+            日期被选择时触发
+            </summary>
+        </member>
+        <member name="P:Element.BDatePicker.Formatter">
+            <summary>
+            时间格式化委托
+            </summary>
+        </member>
+        <member name="T:Element.BDialogBase">
+            <summary>
+            对话框基类，提供对话框常用方法
+            </summary>
+        </member>
+        <member name="P:Element.BDialogBase.Dialog">
+            <summary>
+            可用于操作当前窗口
+            </summary>
+        </member>
+        <member name="M:Element.BDialogBase.CloseAsync``1(``0)">
+            <summary>
+            关闭当前窗口
+            </summary>
+            <param name="result">窗口返回值，该值将作为 <seealso cref="T:Element.DialogResult"/> 的 <seealso cref="P:Element.DialogResult.Result"/> 属性</param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.BDialogBase.CloseAsync">
+            <summary>
+            关闭当前窗口
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Element.BDynamicComponent">
+            <summary>
+            提供动态加载组件的功能
+            </summary>
+        </member>
+        <member name="P:Element.BDynamicComponent.Config">
+            <summary>
+            渲染配置
+            </summary>
+        </member>
+        <member name="P:Element.BForm.IsCreate">
+            <summary>
+            是否是创建
+            </summary>
+        </member>
+        <member name="P:Element.BForm.Name">
+            <summary>
+            表单名称
+            </summary>
+        </member>
+        <member name="P:Element.BForm.Validations">
+            <summary>
+            设置验证规则
+            </summary>
+        </member>
+        <member name="P:Element.BForm.Buttons">
+            <summary>
+            表单按钮
+            </summary>
+        </member>
+        <member name="M:Element.BForm.SubmitAsync(System.String)">
+            <summary>
+            触发浏览器提交
+            </summary>
+        </member>
+        <member name="P:Element.BForm.Value">
+            <summary>
+            该属性仅用于设置表单初始值，获取表单输入值请使用 <seealso cref="M:Element.BForm.GetValue``1"/> 方法
+            </summary>
+        </member>
+        <member name="P:Element.BForm.EntityType">
+            <summary>
+            设置后自动生成表单
+            </summary>
+        </member>
+        <member name="M:Element.BForm.GetValue``1">
+            <summary>
+            获取表单输入值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="P:Element.BFormItem`1.IsHidden">
+            <summary>
+            是否隐藏该表单项
+            </summary>
+        </member>
+        <member name="P:Element.BFormItemObject.ApplyStyle">
+            <summary>
+            是否应用样式，如果不应用，则该组件本身不生成任何 HTML
+            </summary>
+        </member>
+        <member name="P:Element.BFormItemObject.OriginValueHasRendered">
+            <summary>
+            初始值是否已渲染
+            </summary>
+        </member>
+        <member name="P:Element.BFormItemObject.OriginValueHasSet">
+            <summary>
+            初始值是否已设置
+            </summary>
+        </member>
+        <member name="P:Element.BFormItemObject.Image">
+            <summary>
+            设置字段 Label 为图片地址
+            </summary>
+        </member>
+        <member name="P:Element.BFormItemObject.LabelWidth">
+            <summary>
+            标签宽度
+            </summary>
+        </member>
+        <member name="P:Element.BFormItemObject.Placeholder">
+            <summary>
+            占位符
+            </summary>
+        </member>
+        <member name="P:Element.BGroupBox.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Element.BIcon.Icon">
+            <summary>
+            图标类型
+            </summary>
+        </member>
+        <member name="P:Element.BIcon.OnClick">
+            <summary>
+            点击事件
+            </summary>
+        </member>
+        <member name="T:Element.Icon">
+            <summary>
+            https://element.eleme.cn/#/zh-CN/component/icon
+            </summary>
+        </member>
+        <member name="P:Element.BInput`1.Type">
+            <summary>
+            输入框类型
+            </summary>
+        </member>
+        <member name="P:Element.BInput`1.ThrowOnInvalidValue">
+            <summary>
+            当输入值错误时是否抛出异常
+            </summary>
+        </member>
+        <member name="P:Element.BInput`1.Prepend">
+            <summary>
+            在前方加入元素
+            </summary>
+        </member>
+        <member name="P:Element.BInput`1.IsClearButtonClick">
+            <summary>
+            是否启用清空按钮
+            </summary>
+        </member>
+        <member name="P:Element.BInput`1.Image">
+            <summary>
+            按钮背景图片
+            </summary>
+        </member>
+        <member name="P:Element.BInput`1.Size">
+            <summary>
+            输入框尺寸
+            </summary>
+        </member>
+        <member name="P:Element.BInput`1.Formatter">
+            <summary>
+            如何格式化
+            </summary>
+        </member>
+        <member name="P:Element.BInput`1.Value">
+            <summary>
+            输入框的值
+            </summary>
+        </member>
+        <member name="P:Element.BInput`1.ValueChanged">
+            <summary>
+            值改变时触发
+            </summary>
+        </member>
+        <member name="P:Element.BInput`1.Placeholder">
+            <summary>
+            Placeholder
+            </summary>
+        </member>
+        <member name="P:Element.BInput`1.IsDisabled">
+            <summary>
+            是否禁用输入框
+            </summary>
+        </member>
+        <member name="P:Element.BInput`1.IsClearable">
+            <summary>
+            是否可清空
+            </summary>
+        </member>
+        <member name="P:Element.BInput`1.InputElement">
+            <summary>
+            HTML 元素引用
+            </summary>
+        </member>
+        <member name="P:Element.BLayout.Container">
+            <summary>
+            用于捕获 DOM 节点以用于展示 Loading
+            </summary>
+        </member>
+        <member name="P:Element.BLayout.OnKeyDown">
+            <summary>
+            键按下时触发
+            </summary>
+        </member>
+        <member name="P:Element.BLayout.OnKeyUp">
+            <summary>
+            键弹起时触发
+            </summary>
+        </member>
+        <member name="P:Element.BLayout.OnKeyPress">
+            <summary>
+            按键时触发
+            </summary>
+        </member>
+        <member name="P:Element.BMenu.Match">
+            <summary>
+            菜单匹配方法，参数为当前菜单的路由
+            </summary>
+        </member>
+        <member name="P:Element.BPagination.Total">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:Element.BPagination.PageSize">
+            <summary>
+            每页条数
+            </summary>
+        </member>
+        <member name="P:Element.BPagination.CurrentPage">
+            <summary>
+            当前页码，从1开始
+            </summary>
+        </member>
+        <member name="P:Element.BPagination.Background">
+            <summary>
+            是否显示背景颜色
+            </summary>
+        </member>
+        <member name="P:Element.BPagination.ShowPageCount">
+            <summary>
+            最大显示的页码数
+            </summary>
+        </member>
+        <member name="P:Element.BPagination.CurrentPageChanged">
+            <summary>
+            当前页码变化时触发
+            </summary>
+        </member>
+        <member name="P:Element.BPagination.PageCountChanged">
+            <summary>
+            当前最大显示的页码数变化时触发
+            </summary>
+        </member>
+        <member name="P:Element.BPopupLayer.ShowTo">
+            <summary>
+            显示到什么元素上
+            </summary>
+        </member>
+        <member name="P:Element.BPopupLayer.Position">
+            <summary>
+            显示位置
+            </summary>
+        </member>
+        <member name="P:Element.BRadio`1.Value">
+            <summary>
+            每个单选组件自己的值
+            </summary>
+        </member>
+        <member name="P:Element.BRadio`1.SelectedValue">
+            <summary>
+            多个单选组件选择的值
+            </summary>
+        </member>
+        <member name="P:Element.BRadio`1.StatusChanged">
+            <summary>
+            当选择状态发生改变时触发
+            </summary>
+        </member>
+        <member name="P:Element.BRadio`1.SelectedValueChanged">
+            <summary>
+            当选择的值发生改变时触发
+            </summary>
+        </member>
+        <member name="P:Element.BRibbon.Body">
+            <summary>
+            布局内容区
+            </summary>
+        </member>
+        <member name="P:Element.BRibbon.MenuBackgroundColor">
+            <summary>
+            菜单背景颜色
+            </summary>
+        </member>
+        <member name="P:Element.BRibbon.MenuColor">
+            <summary>
+            菜单字体颜色
+            </summary>
+        </member>
+        <member name="P:Element.BRibbon.MenuText">
+            <summary>
+            菜单文字
+            </summary>
+        </member>
+        <member name="P:Element.BRibbon.NavigationHeight">
+            <summary>
+            导航区高度
+            </summary>
+        </member>
+        <member name="P:Element.BRibbonBlock.Title">
+            <summary>
+            Ribbon Tab 标签页区块标题
+            </summary>
+        </member>
+        <member name="P:Element.BRibbonBlock.ChildContent">
+            <summary>
+            区块内容
+            </summary>
+        </member>
+        <member name="P:Element.BSelect`1.IgnoreEnumNames">
+            <summary>
+            当绑定为枚举时，指定哪些枚举名需要忽略
+            </summary>
+        </member>
+        <member name="P:Element.BSelect`1.Value">
+            <summary>
+            当前选中值
+            </summary>
+        </member>
+        <member name="P:Element.BTab.DataSource">
+            <summary>
+            数据源
+            </summary>
+        </member>
+        <member name="P:Element.BTab.IsAddable">
+            <summary>
+            是否显示增加图标
+            </summary>
+        </member>
+        <member name="P:Element.BTab.IsRemovable">
+            <summary>
+            是否可关闭
+            </summary>
+        </member>
+        <member name="P:Element.BTab.Content">
+            <summary>
+            渲染后的内容区域
+            </summary>
+        </member>
+        <member name="P:Element.BTab.Type">
+            <summary>
+            Tab 类型
+            </summary>
+        </member>
+        <member name="P:Element.BTab.OnActiveTabChanged">
+            <summary>
+            Tab 页被切换后触发
+            </summary>
+        </member>
+        <member name="P:Element.BTab.OnActiveTabChanging">
+            <summary>
+            Tab 页被切换前触发
+            </summary>
+        </member>
+        <member name="P:Element.BTab.OnTabClose">
+            <summary>
+            Tab 页被关闭后触发
+            </summary>
+        </member>
+        <member name="P:Element.BTab.OnTabClosing">
+            <summary>
+            Tab 页被关闭时触发
+            </summary>
+        </member>
+        <member name="P:Element.BTab.OnAddingTab">
+            <summary>
+            点击加号按钮增加 Tab 页时触发
+            </summary>
+        </member>
+        <member name="P:Element.BTable.Key">
+            <summary>
+            主键字段
+            </summary>
+        </member>
+        <member name="P:Element.BTable.AutoExpandAll">
+            <summary>
+            自动展开所有节点
+            </summary>
+        </member>
+        <member name="P:Element.BTable.EnableParallel">
+            <summary>
+            节点并行加载
+            </summary>
+        </member>
+        <member name="M:Element.BTable.RefreshRootNodeAsync">
+            <summary>
+            刷新根节点
+            </summary>
+        </member>
+        <member name="M:Element.BTable.ExpandAsync(Element.TreeItemBase,System.Boolean)">
+            <summary>
+            展开某个节点，如果这个节点当前没有子节点，则动态加载子节点
+            </summary>
+            <param name="item"></param>
+            <param name="forceLoad">是否强制加载新数据</param>
+        </member>
+        <member name="P:Element.BTable.OnSave">
+            <summary>
+            当保存数据时触发
+            </summary>
+        </member>
+        <member name="P:Element.BTable.IsEditable">
+            <summary>
+            表格可编辑
+            </summary>
+        </member>
+        <member name="P:Element.BTable.IgnoreProperties">
+            <summary>
+            忽略的字段名称
+            </summary>
+        </member>
+        <member name="P:Element.BTable.Url">
+            <summary>
+            数据获取地址
+            </summary>
+        </member>
+        <member name="P:Element.BTable.DataSource">
+            <summary>
+            数据源
+            </summary>
+        </member>
+        <member name="P:Element.BTable.DataSourceChanged">
+            <summary>
+            当数据源发生变化时触发
+            </summary>
+        </member>
+        <member name="P:Element.BTable.DataType">
+            <summary>
+            动态加载数据时设置实体类型
+            </summary>
+        </member>
+        <member name="P:Element.BTable.AutoGenerateColumns">
+            <summary>
+            是否自动生成列
+            </summary>
+        </member>
+        <member name="P:Element.BTable.HasSelectionColumn">
+            <summary>
+            是否在第一列显示复选框列
+            </summary>
+        </member>
+        <member name="P:Element.BTable.EmptyMessage">
+            <summary>
+            当表格无数据时显示的消息
+            </summary>
+        </member>
+        <member name="P:Element.BTable.Total">
+            <summary>
+            总数据条数
+            </summary>
+        </member>
+        <member name="P:Element.BTable.PageSize">
+            <summary>
+            每页条数
+            </summary>
+        </member>
+        <member name="P:Element.BTable.CurrentPage">
+            <summary>
+            当前页数
+            </summary>
+        </member>
+        <member name="P:Element.BTable.BatchUpdateDelayTime">
+            <summary>
+            若实体实现了 <seealso cref="T:System.ComponentModel.INotifyPropertyChanged"/> 接口，此参数控制多少毫秒没有新通知后刷新数据
+            </summary>
+        </member>
+        <member name="P:Element.BTable.ShowPageCount">
+            <summary>
+            最大显示的页码数
+            </summary>
+        </member>
+        <member name="P:Element.BTable.ShowPageCountChanged">
+            <summary>
+            当前最大显示的页码数变化时触发
+            </summary>
+        </member>
+        <member name="P:Element.BTable.CurrentPageChanged">
+            <summary>
+            当页码变化时触发
+            </summary>
+        </member>
+        <member name="P:Element.BTable.NoPaginationOnSinglePage">
+            <summary>
+            当只有一页时，不显示分页
+            </summary>
+        </member>
+        <member name="P:Element.BTable.SelectedRows">
+            <summary>
+            选中的记录
+            </summary>
+        </member>
+        <member name="P:Element.BTable.SelectedRowsChanged">
+            <summary>
+            选中的记录变化时触发
+            </summary>
+        </member>
+        <member name="P:Element.BTable.EnablePagination">
+            <summary>
+            启用分页
+            </summary>
+        </member>
+        <member name="P:Element.BTable.Height">
+            <summary>
+            表格高度
+            </summary>
+        </member>
+        <member name="P:Element.BTable.IsStripe">
+            <summary>
+            启用斑马纹
+            </summary>
+        </member>
+        <member name="P:Element.BTable.LoadingBackground">
+            <summary>
+            加载中状态背景颜色
+            </summary>
+        </member>
+        <member name="P:Element.BTable.LoadingIconClass">
+            <summary>
+            加载中状态样式类
+            </summary>
+        </member>
+        <member name="P:Element.BTable.LoadingText">
+            <summary>
+            加载中状态文字
+            </summary>
+        </member>
+        <member name="P:Element.BTable.OnLoadDataSource">
+            <summary>
+            当加载数据源时触发，传入参数为当前页
+            </summary>
+        </member>
+        <member name="P:Element.BTableColumn.SortNo">
+            <summary>
+            排序编号
+            </summary>
+        </member>
+        <member name="P:Element.BTableColumn.Property">
+            <summary>
+            当前列关联的属性名
+            </summary>
+        </member>
+        <member name="P:Element.BTableColumn.IsEditable">
+            <summary>
+            是否可编辑
+            </summary>
+        </member>
+        <member name="P:Element.BTableColumn.Format">
+            <summary>
+            格式化
+            </summary>
+        </member>
+        <member name="P:Element.BTag.Closable">
+            <summary>
+            是否可关闭
+            </summary>
+        </member>
+        <member name="P:Element.BTag.Type">
+            <summary>
+            标签类型
+            </summary>
+        </member>
+        <member name="P:Element.BTag.Theme">
+            <summary>
+            主题
+            </summary>
+        </member>
+        <member name="P:Element.BTag.OnClick">
+            <summary>
+            点击事件
+            </summary>
+        </member>
+        <member name="P:Element.BTag.OnBeforeClose">
+            <summary>
+            关闭前执行
+            </summary>
+        </member>
+        <member name="P:Element.BTag.OnAfteClose">
+            <summary>
+            关闭后执行
+            </summary>
+        </member>
+        <member name="P:Element.BTag.Size">
+            <summary>
+            尺寸
+            </summary>
+        </member>
+        <member name="T:Element.TagSize">
+            <summary>
+            标签尺寸
+            </summary>
+        </member>
+        <member name="T:Element.TagTheme">
+            <summary>
+            标签主题
+            </summary>
+        </member>
+        <member name="T:Element.TagType">
+            <summary>
+            标签类型
+            </summary>
+        </member>
+        <member name="P:Element.BTransfer.EnableSearch">
+            <summary>
+            启用搜索
+            </summary>
+        </member>
+        <member name="P:Element.BTransfer.OnList1Search">
+            <summary>
+            当列表1搜索时触发
+            </summary>
+        </member>
+        <member name="P:Element.BTransfer.List1SearchPlaceHolder">
+            <summary>
+            列表1搜索框 PlaceHolder
+            </summary>
+        </member>
+        <member name="P:Element.BTransfer.List2SearchPlaceHolder">
+            <summary>
+            列表2搜索框 PlaceHolder
+            </summary>
+        </member>
+        <member name="P:Element.BTransfer.OnList2Search">
+            <summary>
+            当列表2搜索时触发
+            </summary>
+        </member>
+        <member name="P:Element.BTransfer.LeftTitle">
+            <summary>
+            左边列表的标题
+            </summary>
+        </member>
+        <member name="P:Element.BTransfer.RightTitle">
+            <summary>
+            右边列表的标题
+            </summary>
+        </member>
+        <member name="P:Element.BTransfer.List1">
+            <summary>
+            列表1
+            </summary>
+        </member>
+        <member name="P:Element.BTransfer.List2">
+            <summary>
+            列表2
+            </summary>
+        </member>
+        <member name="P:Element.BTransition.OnPause">
+            <summary>
+            当动画暂停时触发
+            </summary>
+        </member>
+        <member name="P:Element.BTransition.AutoAdjustPosition">
+            <summary>
+            根据动画元素尺寸自动调整位置，一般用于弹窗位置调整
+            </summary>
+        </member>
+        <member name="P:Element.BTransition.OnAllEnd">
+            <summary>
+            当所有动画执行完成后触发
+            </summary>
+        </member>
+        <member name="P:Element.BTransition.IsAbsolute">
+            <summary>
+            绝对定位
+            </summary>
+        </member>
+        <member name="P:Element.BTransition.Path">
+            <summary>
+            动画执行路径
+            </summary>
+        </member>
+        <member name="P:Element.BTransition.InitialStyle">
+            <summary>
+            动画开始之前的样式
+            </summary>
+        </member>
+        <member name="P:Element.BTransition.Content">
+            <summary>
+            要进行动画播放的内容
+            </summary>
+        </member>
+        <member name="M:Element.BTransition.Resume">
+            <summary>
+            使暂停的动画继续执行
+            </summary>
+        </member>
+        <member name="P:Element.BTransitionPath.Increment">
+            <summary>
+            是否增量应用样式，而不是最终的样式
+            </summary>
+        </member>
+        <member name="P:Element.BTransitionPath.Pause">
+            <summary>
+            使动画暂停执行，直到 <see cref="T:Element.BTransition"/> 的 <see cref="M:Element.BTransition.Resume"/> 方法被调用
+            </summary>
+        </member>
+        <member name="P:Element.BTransitionPath.Duration">
+            <summary>
+            动画执行时长，以毫秒为单位
+            </summary>
+        </member>
+        <member name="P:Element.BTransitionPath.Delay">
+            <summary>
+            延迟执行，以毫秒为单位
+            </summary>
+        </member>
+        <member name="P:Element.BTree.LoadFullTree">
+            <summary>
+            一次性加载所有节点
+            </summary>
+        </member>
+        <member name="P:Element.BTree.SelectedNodesChanged">
+            <summary>
+            选择节点后触发
+            </summary>
+        </member>
+        <member name="P:Element.BTree.Url">
+            <summary>
+            服务器地址
+            </summary>
+        </member>
+        <member name="P:Element.BTree.ItemType">
+            <summary>
+            节点类型，必须实现 <seealso cref="T:Element.TreeItemBase"/> 接口
+            </summary>
+        </member>
+        <member name="P:Element.BTree.DataFormat">
+            <summary>
+            数据格式
+            </summary>
+        </member>
+        <member name="P:Element.BTree.AutoExpandAll">
+            <summary>
+            自动展开所有层级
+            </summary>
+        </member>
+        <member name="P:Element.BTree.DataSource">
+            <summary>
+            数据源
+            </summary>
+        </member>
+        <member name="M:Element.BTree.ExpandAsync(Element.TreeItemBase,System.Boolean)">
+            <summary>
+            展开某个节点
+            </summary>
+            <param name="treeItem"></param>
+        </member>
+        <member name="P:Element.BTreeItem.Id">
+            <summary>
+            节点值
+            </summary>
+        </member>
+        <member name="P:Element.BTreeItem.Text">
+            <summary>
+            显示文字
+            </summary>
+        </member>
+        <member name="P:Element.BUpload.EnablePasteUpload">
+            <summary>
+            启用粘贴上传
+            </summary>
+        </member>
+        <member name="P:Element.BUpload.Url">
+            <summary>
+            文件上传地址
+            </summary>
+        </member>
+        <member name="P:Element.BUpload.Tip">
+            <summary>
+            上传界面的小提示
+            </summary>
+        </member>
+        <member name="P:Element.BUpload.OnDeleteFile">
+            <summary>
+            文件删除时触发
+            </summary>
+        </member>
+        <member name="P:Element.BUpload.AllowExtensions">
+            <summary>
+            允许上传的文件后缀，以“.”开头
+            </summary>
+        </member>
+        <member name="P:Element.BUpload.MaxSize">
+            <summary>
+            最大上传文件大小，以 KB 为单位
+            </summary>
+        </member>
+        <member name="P:Element.BUpload.Width">
+            <summary>
+            对图片文件限制宽度
+            </summary>
+        </member>
+        <member name="P:Element.BUpload.OnFileUploadSuccess">
+            <summary>
+            当文件上传成功时触发
+            </summary>
+        </member>
+        <member name="P:Element.BUpload.OnFileUploadFailure">
+            <summary>
+            当文件上传失败时触发
+            </summary>
+        </member>
+        <member name="P:Element.BUpload.OnFileListUpload">
+            <summary>
+            当文件列表上传完成时触发
+            </summary>
+        </member>
+        <member name="P:Element.BUpload.OnFileUploadStart">
+            <summary>
+            当文件开始上传时触发
+            </summary>
+        </member>
+        <member name="P:Element.BUpload.Height">
+            <summary>
+            对图片文件限制高度
+            </summary>
+        </member>
+        <member name="P:Element.BUpload.UploadType">
+            <summary>
+            上传类型
+            </summary>
+        </member>
+        <member name="P:Element.ButtonBase.Image">
+            <summary>
+            按钮图片
+            </summary>
+        </member>
+        <member name="P:Element.ButtonBase.HoverImage">
+            <summary>
+            鼠标放上去时的按钮图片
+            </summary>
+        </member>
+        <member name="P:Element.ButtonBase.ClickImage">
+            <summary>
+            鼠标点击时的按钮图片
+            </summary>
+        </member>
+        <member name="P:Element.ButtonBase.AppendCustomCls">
+            <summary>
+            是否将自定义的 CSS 类加入到已有 CSS 类，如果为 false，则替换掉默认 CSS 类，默认为 true
+            </summary>
+        </member>
+        <member name="P:Element.ConfigurationAttribute.Styles">
+            <summary>
+            样式文件路径，支持 CSS 和 LESS
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.BaseAttribute.Image">
+            <summary>
+            背景图片（并非每个组件都生效，我的项目用到的都会生效！！）
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.BaseAttribute.HoverImage">
+            <summary>
+            鼠标放上去的背景图片（并非每个组件都生效，我的项目用到的都会生效！！）
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.BaseAttribute.ClickImage">
+            <summary>
+            鼠标点击的背景图片（并非每个组件都生效，我的项目用到的都会生效！！）
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.BaseAttribute.Style">
+            <summary>
+            CSS 样式（并非每个组件都生效，我的项目用到的都会生效！！）
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.CheckBoxAttribute.Text">
+            <summary>
+            复选框文本
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.InputAttribute.Type">
+            <summary>
+            输入框类型
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.InputAttribute.Size">
+            <summary>
+            输入框尺寸
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.InputAttribute.Placeholder">
+            <summary>
+            Placeholder
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.InputAttribute.IsDisabled">
+            <summary>
+            是否禁用输入框
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.InputAttribute.IsClearable">
+            <summary>
+            是否可清空
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.InputAttribute.PrefixIcon">
+            <summary>
+            前缀图标
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.InputAttribute.SuffixIcon">
+            <summary>
+            后缀图标
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.SelectAttribute.Display">
+            <summary>
+            显示字段
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.SelectAttribute.Value">
+            <summary>
+            值字段
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.SelectAttribute.DataSourceLoader">
+            <summary>
+            数据加载器
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.TableAttribute.Height">
+            <summary>
+            表格高度
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.TableAttribute.IsEditable">
+            <summary>
+            表格可编辑
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.UploadAttribute.Url">
+            <summary>
+            上传地址
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.UploadAttribute.Type">
+            <summary>
+            上传类型
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.UploadAttribute.MaxSize">
+            <summary>
+            大小限制，以 KB 为单位
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.UploadAttribute.EnablePasteUpload">
+            <summary>
+            粘贴上传
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.UploadAttribute.Tip">
+            <summary>
+            上传提示
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.UploadAttribute.AllowExtensions">
+            <summary>
+            允许的后缀
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.UploadAttribute.Width">
+            <summary>
+            对图片文件限制宽度
+            </summary>
+        </member>
+        <member name="P:Element.ControlConfigs.UploadAttribute.Height">
+            <summary>
+            对图片文件限制高度
+            </summary>
+        </member>
+        <member name="T:Element.CssBuilder">
+            <summary>
+            CSS 构建器
+            </summary>
+        </member>
+        <member name="M:Element.CssBuilder.Create">
+            <summary>
+            创建一个 <seealso cref="T:Element.CssBuilder"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Element.CssBuilder.AddIf(System.Boolean,System.String)">
+            <summary>
+            如果满足条件，则添加一个属性
+            </summary>
+            <param name="condition">条件</param>
+            <param name="css">css 属性</param>
+            <returns></returns>
+        </member>
+        <member name="T:Element.CssClassBuilder">
+            <summary>
+            CSS 类构建器
+            </summary>
+        </member>
+        <member name="T:Element.CssStyleBuilder">
+            <summary>
+            CSS 样式构建器
+            </summary>
+        </member>
+        <member name="T:Element.DataFormat">
+            <summary>
+            树控件数据源的格式
+            </summary>
+        </member>
+        <member name="F:Element.DataFormat.List">
+            <summary>
+            没有层级关系，所有的节点都在一个集合当中
+            </summary>
+        </member>
+        <member name="F:Element.DataFormat.Children">
+            <summary>
+            每一个节点对应的数据都有标识自己的子节点，有层级关系
+            </summary>
+        </member>
+        <member name="P:Element.DialogOption.Parameters">
+            <summary>
+            窗口要显示的组件所需要的参数
+            </summary>
+        </member>
+        <member name="P:Element.DialogOption.IsDialog">
+            <summary>
+            是否窗口
+            </summary>
+        </member>
+        <member name="P:Element.DialogOption.FullScreen">
+            <summary>
+            弹窗全屏
+            </summary>
+        </member>
+        <member name="P:Element.DialogOption.Width">
+            <summary>
+            宽度
+            </summary>
+        </member>
+        <member name="P:Element.DialogOption.Buttons">
+            <summary>
+            窗口按钮，尚未测试
+            </summary>
+        </member>
+        <member name="P:Element.DialogOption.IsModal">
+            <summary>
+            是否模态窗口
+            </summary>
+        </member>
+        <member name="P:Element.DialogOption.Point">
+            <summary>
+            窗口显示位置
+            </summary>
+        </member>
+        <member name="M:Element.DialogOption.CloseDialogAsync``1(``0)">
+            <summary>
+            关闭窗口
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.DialogOption.CloseDialogAsync">
+            <summary>
+            关闭窗口
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Element.DialogService.CloseDialogAsync``2(``0,``1)">
+            <summary>
+            关闭对话框
+            </summary>
+            <typeparam name="TComponent"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <param name="instance"></param>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.DialogService.ShowDialogAsync``2(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            显示一个窗口
+            </summary>
+            <typeparam name="TComponent"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <param name="title">标题</param>
+            <param name="parameters">组件所需要的参数</param>
+        </member>
+        <member name="M:Element.DialogService.ShowDialogAsync``2(System.String,System.Single)">
+            <summary>
+            显示一个窗口
+            </summary>
+            <typeparam name="TComponent">要显示的组件</typeparam>
+            <typeparam name="TResult">容器的返回值</typeparam>
+            <param name="title">标题</param>
+            <param name="width">宽度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.DialogService.ShowDialogAsync``1(System.String,System.Single)">
+            <summary>
+            显示一个窗口
+            </summary>
+            <typeparam name="TComponent">要显示的组件</typeparam>
+            <param name="title">标题</param>
+            <param name="width">宽度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.DialogService.ShowDialogAsync``1(System.String,System.Single,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            显示一个窗口
+            </summary>
+            <typeparam name="TComponent">要显示的组件</typeparam>
+            <param name="title">标题</param>
+            <param name="width">宽度</param>
+            <param name="onShow"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.DialogService.ShowDialogAsync``2(System.String,System.Single,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            显示一个窗口
+            </summary>
+            <typeparam name="TComponent">要显示的组件</typeparam>
+            <typeparam name="TResult">容器的返回值</typeparam>
+            <param name="title">标题</param>
+            <param name="width">宽度</param>
+            <param name="parameters">窗口组件所需要的参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.DialogService.ShowDialogAsync``1(System.Object,System.String)">
+            <summary>
+            显示一个窗口
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="type">要显示的内容，可以是一个组件的 <seealso cref="T:System.Type"/></param>
+            <param name="title">标题</param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.DialogService.ShowDialogAsync``1(System.Object,System.String,System.Single)">
+            <summary>
+            显示一个窗口
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="type">要显示的内容，可以是一个组件的 <seealso cref="T:System.Type"/></param>
+            <param name="title">标题</param>
+            <param name="width"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.DialogService.ShowDialogAsync``1(System.Object,System.String,System.Single,System.Collections.Generic.IDictionary{System.String,System.Object},System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            显示一个窗口
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="type">要显示的内容，可以是一个组件的 <seealso cref="T:System.Type"/></param>
+            <param name="title">标题</param>
+            <param name="width">宽度</param>
+            <param name="parameters">显示该组件所需要的参数</param>
+            <param name="onShow"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.DialogService.ShowLayerAsync``1(System.Object,System.Single,System.Collections.Generic.IDictionary{System.String,System.Object},System.Drawing.PointF)">
+            <summary>
+            显示一个非模态的层到指定位置
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="type">要显示的内容，可以是一个组件的 <seealso cref="T:System.Type"/></param>
+            <param name="width">宽度</param>
+            <param name="parameters">显示该组件所需要的参数</param>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.DialogService.ShowDialogAsync``1(System.String)">
+            <summary>
+            显示一个窗口
+            </summary>
+            <typeparam name="TComponent"></typeparam>
+            <param name="title">标题</param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.DialogService.ShowDialogAsync``1(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            显示一个窗口
+            </summary>
+            <typeparam name="TComponent"></typeparam>
+            <param name="title">标题</param>
+            <param name="parameters">显示该组件所需要的参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.DialogService.ShowDialogAsync``1(System.String,System.Single,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            显示一个窗口
+            </summary>
+            <typeparam name="TComponent"></typeparam>
+            <param name="title">标题</param>
+            <param name="width">宽度</param>
+            <param name="parameters">显示该组件所需要的参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.DialogService.ShowFullScreenDialogAsync``1(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            显示一个全屏窗口
+            </summary>
+            <typeparam name="TComponent"></typeparam>
+            <param name="title">标题</param>
+            <param name="parameters">显示该组件所需要的参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.DialogService.ShowDialog(Element.DialogOption)">
+            <summary>
+            显示一个窗口
+            </summary>
+            <param name="option"></param>
+        </member>
+        <member name="P:Element.EditorGeneratorAttribute.Control">
+            <summary>
+            编辑器控件
+            </summary>
+        </member>
+        <member name="P:Element.EditorGeneratorAttribute.IsRequired">
+            <summary>
+            是否必填
+            </summary>
+        </member>
+        <member name="P:Element.EditorGeneratorAttribute.Label">
+            <summary>
+            显示文本
+            </summary>
+        </member>
+        <member name="P:Element.EditorGeneratorAttribute.RequiredMessage">
+            <summary>
+            错误消息
+            </summary>
+        </member>
+        <member name="P:Element.EditorGeneratorAttribute.Ignore">
+            <summary>
+            是否忽略该属性
+            </summary>
+        </member>
+        <member name="P:Element.ElementComponentBase.EnableAlwaysRender">
+            <summary>
+            若该项为 true，则该组件会始终允许刷新，不受 <seealso cref="M:Element.ElementComponentBase.MarkAsRequireRender"/> 方法控制
+            </summary>
+        </member>
+        <member name="P:Element.ElementComponentBase.Cls">
+            <summary>
+            自定义 CSS 类
+            </summary>
+        </member>
+        <member name="P:Element.ElementComponentBase.Style">
+            <summary>
+            设置自定义样式
+            </summary>
+        </member>
+        <member name="M:Element.ElementComponentBase.Alert(System.String)">
+            <summary>
+            弹出 Alert 消息
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:Element.ElementComponentBase.ConfirmAsync(System.String)">
+            <summary>
+            弹出 Confirm 消息
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:Element.ElementComponentBase.MarkAsRequireRender">
+            <summary>
+            默认情况下所有复杂组件都只进行一次渲染，该方法将组件置为需要再次渲染
+            </summary>
+        </member>
+        <member name="M:Element.Extension.AddBlazuiServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            添加 Blazui 相关服务
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Element.GlobalBlazuiSettings">
+            <summary>
+            全局配置
+            </summary>
+        </member>
+        <member name="P:Element.GlobalBlazuiSettings.DisableAnimation">
+            <summary>
+            禁用所有组件动画，注：1、CSS 动画无法禁止，禁用动画的出发点是为了提高性能，CSS动画并不耗费性能，2、Toast（Message） 因支持同时弹出多个，所以不支持禁止
+            </summary>
+        </member>
+        <member name="T:Element.HtmlPropertyBuilder">
+            <summary>
+            属性构建器
+            </summary>
+        </member>
+        <member name="M:Element.HtmlPropertyBuilder.CreateCssClassBuilder">
+            <summary>
+            创建一个 <seealso cref="T:Element.CssClassBuilder"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Element.HtmlPropertyBuilder.CreateCssStyleBuilder">
+            <summary>
+            创建一个 <seealso cref="T:Element.CssStyleBuilder"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Element.HtmlPropertyBuilder.AddIf(System.Boolean,System.String[])">
+            <summary>
+            如果满足条件，则添加一个属性
+            </summary>
+            <param name="condition">条件</param>
+            <param name="propertyList">css 属性</param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.HtmlPropertyBuilder.Add(System.String[])">
+            <summary>
+            添加一个属性
+            </summary>
+            <param name="cssList">css 属性</param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.HtmlPropertyBuilder.Remove(System.String)">
+            <summary>
+            移除一个属性
+            </summary>
+            <param name="styleName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Element.IFileModel.FileName">
+            <summary>
+            文件名
+            </summary>
+        </member>
+        <member name="P:Element.IFileModel.Id">
+            <summary>
+            文件唯一标识
+            </summary>
+        </member>
+        <member name="P:Element.IFileModel.Url">
+            <summary>
+            文件访问地址，如果上传的是图片，并且需要预览，则必须传入访问地址
+            </summary>
+        </member>
+        <member name="T:Element.Lang.BLang">
+            <summary>
+            Lang
+            </summary>
+        </member>
+        <member name="P:Element.Lang.BLang.configuration">
+            <summary>
+            一组键/值应用程序配置属性
+            </summary>
+        </member>
+        <member name="P:Element.Lang.BLang.CurrentLang">
+            <summary>
+            当前语言，默认中文
+            </summary>
+        </member>
+        <member name="M:Element.Lang.BLang.SetLangAsync(System.String)">
+            <summary>
+            设置语言文件的文件名
+            </summary>
+            <param name="lang"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.Lang.ILang.InitBLangBaseAsync">
+            <summary>
+            初始化加载的json文件
+            </summary>
+        </member>
+        <member name="M:Element.Lang.ILang.T(System.String)">
+            <summary>
+            读取对应文件的语言
+            </summary>
+            <param name="sections">节点</param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.LoadingExtension.Loading(Element.IContainerComponent)">
+            <summary>
+            显示 Loading 状态
+            </summary>
+            <param name="container"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.LoadingExtension.WithLoadingAsync(Element.IContainerComponent,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            显示 Loading 状态
+            </summary>
+            <param name="container"></param>
+            <param name="action">在 Loading 状态期间要做的事</param>
+            <returns></returns>
+        </member>
+        <member name="M:Element.LoadingExtension.WithLoadingAsync(Element.IContainerComponent,System.Func{System.Threading.Tasks.Task},System.String)">
+            <summary>
+            显示 Loading 状态
+            </summary>
+            <param name="container"></param>
+            <param name="action">在 Loading 状态期间要做的事</param>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Element.PopupOption.Instance">
+            <summary>
+            关联到的 BPopup 组件实例
+            </summary>
+        </member>
+        <member name="P:Element.PopupOption.Element">
+            <summary>
+            弹出层元素本身
+            </summary>
+        </member>
+        <member name="P:Element.PopupOption.ShadowElement">
+            <summary>
+            遮罩层元素
+            </summary>
+        </member>
+        <member name="P:Element.PopupOption.Target">
+            <summary>
+            要将弹出层显示到哪个元素下方
+            </summary>
+        </member>
+        <member name="P:Element.PopupOption.HideStatus">
+            <summary>
+            隐藏动画状态
+            </summary>
+        </member>
+        <member name="P:Element.PopupOption.ShowStatus">
+            <summary>
+            显示动画状态
+            </summary>
+        </member>
+        <member name="T:Element.PropertyAttribute">
+            <summary>
+            设置读取当前实体的指定属性值对象的指定属性值
+            </summary>
+        </member>
+        <member name="P:Element.PropertyAttribute.Property">
+            <summary>
+            属性名
+            </summary>
+        </member>
+        <member name="P:Element.PropertyAttribute.ModelProperty">
+            <summary>
+            当前实体的指定属性名，为可则读取当前属性的值
+            </summary>
+        </member>
+        <member name="P:Element.TableColumnAttribute.IsEditable">
+            <summary>
+            是否可编辑
+            </summary>
+        </member>
+        <member name="P:Element.TableColumnAttribute.Text">
+            <summary>
+            列头文本
+            </summary>
+        </member>
+        <member name="P:Element.TableColumnAttribute.Width">
+            <summary>
+            宽度
+            </summary>
+        </member>
+        <member name="P:Element.TableColumnAttribute.Format">
+            <summary>
+            格式化参数，仅支持日期格式
+            </summary>
+        </member>
+        <member name="P:Element.TableColumnAttribute.Ignore">
+            <summary>
+            渲染是否忽略该属性
+            </summary>
+        </member>
+        <member name="P:Element.TableColumnAttribute.SortNo">
+            <summary>
+            排序编号
+            </summary>
+        </member>
+        <member name="T:Element.TableIgnoreAttribute">
+            <summary>
+            忽略某个属性
+            </summary>
+        </member>
+        <member name="P:Element.TableSaveEventArgs.Action">
+            <summary>
+            保存动作类型
+            </summary>
+        </member>
+        <member name="P:Element.TableSaveEventArgs.Data">
+            <summary>
+            要保存的数据
+            </summary>
+        </member>
+        <member name="P:Element.TableSaveEventArgs.Cancel">
+            <summary>
+            是否取消保存动作
+            </summary>
+        </member>
+        <member name="P:Element.TableSaveEventArgs.Table">
+            <summary>
+            表格对象
+            </summary>
+        </member>
+        <member name="T:Element.TabOption">
+            <summary>
+            Tab 选项
+            </summary>
+        </member>
+        <member name="P:Element.TabOption.Name">
+            <summary>
+            Tab 名称
+            </summary>
+        </member>
+        <member name="P:Element.TabOption.IsClosable">
+            <summary>
+            是否可关闭
+            </summary>
+        </member>
+        <member name="P:Element.TabOption.IsDisabled">
+            <summary>
+            是否禁用
+            </summary>
+        </member>
+        <member name="P:Element.TabOption.Title">
+            <summary>
+            Tab 标题
+            </summary>
+        </member>
+        <member name="P:Element.TabOption.Content">
+            <summary>
+            Tag 内容，可以是一串字符串、<seealso cref="T:Microsoft.AspNetCore.Components.RenderFragment"/>  以及一个组件的 <seealso cref="T:System.Type"/>
+            </summary>
+        </member>
+        <member name="P:Element.TabOption.BodyStyle">
+            <summary>
+            Tab Body 区附加样式
+            </summary>
+        </member>
+        <member name="P:Element.TabOption.IsActive">
+            <summary>
+            是否活动
+            </summary>
+        </member>
+        <member name="P:Element.TabOption.OnRenderCompletedAsync">
+            <summary>
+            Tab 页渲染完成时触发
+            </summary>
+        </member>
+        <member name="P:Element.TabOption.OnTabPanelChanging">
+            <summary>
+            Tab 页切换时触发
+            </summary>
+        </member>
+        <member name="P:Element.UploadModel.FileName">
+            <summary>
+            文件名
+            </summary>
+        </member>
+        <member name="P:Element.UploadModel.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:Element.UploadModel.Url">
+            <summary>
+            图片地址
+            </summary>
+        </member>
+        <member name="P:Element.UploadModel.Id">
+            <summary>
+            文件唯一标识
+            </summary>
+        </member>
+        <member name="P:Element.UploadModel.Message">
+            <summary>
+            上传地址返回的 message 字段信息
+            </summary>
+        </member>
+        <member name="F:Element.UploadStatus.UnStart">
+            <summary>
+            未开始
+            </summary>
+        </member>
+        <member name="F:Element.UploadStatus.Uploading">
+            <summary>
+            上传中
+            </summary>
+        </member>
+        <member name="F:Element.UploadStatus.Success">
+            <summary>
+            上传成功
+            </summary>
+        </member>
+        <member name="F:Element.UploadStatus.Failure">
+            <summary>
+            上传失败
+            </summary>
+        </member>
+        <member name="F:Element.UploadType.File">
+            <summary>
+            普通文件
+            </summary>
+        </member>
+        <member name="F:Element.UploadType.Image">
+            <summary>
+            图片
+            </summary>
+        </member>
+    </members>
+</doc>
