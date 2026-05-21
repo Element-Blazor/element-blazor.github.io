@@ -1,4 +1,4 @@
-ï»¿
+
 
 using Microsoft.AspNetCore.Components;
 using System;
@@ -11,24 +11,24 @@ namespace Element.Demo.Transfer
 {
     public partial class FormTransfer : BComponentBase
     {
-        internal BForm form;
+        internal ElForm form;
         internal TransferModel value;
         internal List<TransferItem> List1 = new List<TransferItem>()
         {
             new TransferItem()
             {
                  Id="1",
-                 Label="é€‰é¡¹1"
+                 Label="Ñ¡Ïî1"
             },
             new TransferItem()
             {
                  Id="2",
-                 Label="é€‰é¡¹2"
+                 Label="Ñ¡Ïî2"
             },
             new TransferItem()
             {
                  Id="3",
-                 Label="é€‰é¡¹3"
+                 Label="Ñ¡Ïî3"
             }
         };
 

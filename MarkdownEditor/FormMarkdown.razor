@@ -1,12 +1,12 @@
-﻿@inherits BComponentBase
-<BForm @ref="form" Value="article">
-    <BFormItem TValue="string" Label="标题" IsRequired="true" Name="@nameof(ArticleModel.Title)">
-        <BInput TValue="string"></BInput>
-    </BFormItem>
-    <BFormItem TValue="string" Label="内容" IsRequired="true" Name="@nameof(ArticleModel.Content)">
-        <BMarkdownEditor UploadUrl="/api/md/upload" DisableFileUpload="true" DisableImageUpload="true"></BMarkdownEditor>
-    </BFormItem>
-    <BFormActionItem Style="text-align:right">
-        <BButton Type="@ButtonType.Primary" OnClick="Submit">创建</BButton>
-    </BFormActionItem>
-</BForm>
+@inherits BComponentBase
+<ElForm @ref="form" Model="article">
+    <ElFormItem TValue="string" Label="标题" Required="true" Prop="@nameof(ArticleModel.Title)">
+        <ElInput TValue="string"></ElInput>
+    </ElFormItem>
+    <ElFormItem TValue="string" Label="内容" Required="true" Prop="@nameof(ArticleModel.Content)">
+        <ElMarkdownEditor UploadUrl="/api/md/upload" DisableFileUpload="true" DisableImageUpload="true"></ElMarkdownEditor>
+    </ElFormItem>
+    <ElFormActionItem Style="text-align:right">
+        <ElButton Type="@ButtonType.Primary" OnClick="Submit">创建</ElButton>
+    </ElFormActionItem>
+</ElForm>

@@ -1,4 +1,4 @@
-﻿
+
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace Element.Demo.Form
         [Inject]
         Element.MessageBox MessageBox { get; set; }
 
-        protected BForm demoForm;
+        protected ElForm demoForm;
         protected void Submit()
         {
             if (!demoForm.IsValid())

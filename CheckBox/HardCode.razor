@@ -1,3 +1,3 @@
-﻿@inherits BComponentBase
-<BCheckBox @bind-Value="Value">硬编码选项 @Value</BCheckBox>
-<BCheckBox @bind-Value="Value" IsDisabled="true">硬编码选项2</BCheckBox>
+@inherits BComponentBase
+<ElCheckbox TValue="object" @bind-Value="Value">硬编码选项 @Value</ElCheckbox>
+<ElCheckbox TValue="object" @bind-Value="Value" Disabled="true">硬编码选项2</ElCheckbox>

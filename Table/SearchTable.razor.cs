@@ -1,4 +1,4 @@
-Ôªø
+
 
 using Microsoft.AspNetCore.Components;
 using System;
@@ -11,8 +11,8 @@ namespace Element.Demo.Table
 {
     public partial class SearchTable : ComponentBase
     {
-        internal BForm searchForm;
-        internal BTable table;
+        internal ElForm searchForm;
+        internal ElTable table;
         protected int currentPage;
         private SearchCondition condition;
         protected List<AutoGenerateColumnTestData> AllDatas = new List<AutoGenerateColumnTestData>();
@@ -24,8 +24,8 @@ namespace Element.Demo.Table
             {
                 AllDatas.Add(new AutoGenerateColumnTestData()
                 {
-                    Address = "Âú∞ÂùÄ" + i,
-                    Name = "Âº†‰∏â" + i,
+                    Address = "µÿ÷∑" + i,
+                    Name = "’≈»˝" + i,
                     Time = DateTime.Now
                 });
             }

@@ -1,4 +1,4 @@
-锘縰sing Element;
+using Element;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace Element.Demo.Table
         protected List<AutoGenerateColumnTestData> AllDatas = new List<AutoGenerateColumnTestData>();
         protected List<AutoGenerateColumnTestData> Datas = new List<AutoGenerateColumnTestData>();
 
-        protected BTable table;
+        protected ElTable table;
         protected int currentPage = 1;
 
         internal int CurrentPage
@@ -53,8 +53,8 @@ namespace Element.Demo.Table
             {
                 AllDatas.Add(new AutoGenerateColumnTestData()
                 {
-                    Address = "鍦板潃" + i,
-                    Name = "寮犱笁" + i,
+                    Address = "地址" + i,
+                    Name = "张三" + i,
                     Time = DateTime.Now
                 });
             }
@@ -63,11 +63,11 @@ namespace Element.Demo.Table
 
         public void Edit(object testData)
         {
-            MessageService.Show($"姝ｅ湪缂栬緫 " + ((AutoGenerateColumnTestData)testData).Name);
+            MessageService.Show($"正在编辑 " + ((AutoGenerateColumnTestData)testData).Name);
         }
         public void Del(object testData)
         {
-            MessageService.Show($"姝ｅ湪鍒犻櫎 " + ((AutoGenerateColumnTestData)testData).Name, MessageType.Warning);
+            MessageService.Show($"正在删除 " + ((AutoGenerateColumnTestData)testData).Name, MessageType.Warning);
         }
     }
 }

@@ -1,4 +1,4 @@
-ï»¿
+
 
 using Microsoft.AspNetCore.Components;
 using System;
@@ -16,7 +16,7 @@ namespace Element.Demo.Form
         Element.MessageBox MessageBox { get; set; }
 
         internal object value;
-        protected BForm demoForm;
+        protected ElForm demoForm;
         protected void Submit()
         {
             if (!demoForm.IsValid())
@@ -36,9 +36,9 @@ namespace Element.Demo.Form
                 Resource1 = Resource.Option2,
                 Area = Area.Shanghai,
                 Delivery = true,
-                Description = "è¯¦æƒ…",
-                Name = "æµ‹è¯•",
-                Resource = "åœºåœ°",
+                Description = "ÏêÇé",
+                Name = "²âÊÔ",
+                Resource = "³¡µØ",
                 Time = DateTime.Now,
                 Type = new List<string>()
                  {

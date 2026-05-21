@@ -1,4 +1,4 @@
-ï»¿
+
 
 using Microsoft.AspNetCore.Components;
 using System;
@@ -15,7 +15,7 @@ namespace Element.Demo.Table
         protected List<AutoGenerateColumnTestData> Datas = new List<AutoGenerateColumnTestData>();
 
         internal bool requireRender = false;
-        protected BTable table;
+        protected ElTable table;
         protected int currentPage = 1;
 
         internal int CurrentPage
@@ -41,8 +41,8 @@ namespace Element.Demo.Table
             {
                 AllDatas.Add(new AutoGenerateColumnTestData()
                 {
-                    Address = "åœ°å€" + i,
-                    Name = "å¼ ä¸‰" + i,
+                    Address = "µØÖ·" + i,
+                    Name = "ÕÅÈı" + i,
                     Time = DateTime.Now
                 });
             }
@@ -51,11 +51,11 @@ namespace Element.Demo.Table
 
         public void Edit(object testData)
         {
-            MessageService.Show($"æ­£åœ¨ç¼–è¾‘ " + ((AutoGenerateColumnTestData)testData).Name);
+            MessageService.Show($"ÕıÔÚ±à¼­ " + ((AutoGenerateColumnTestData)testData).Name);
         }
         public void Del(object testData)
         {
-            MessageService.Show($"æ­£åœ¨åˆ é™¤ " + ((AutoGenerateColumnTestData)testData).Name, MessageType.Warning);
+            MessageService.Show($"ÕıÔÚÉ¾³ı " + ((AutoGenerateColumnTestData)testData).Name, MessageType.Warning);
         }
 
         protected override bool ShouldRender()

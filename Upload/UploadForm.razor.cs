@@ -1,4 +1,4 @@
-ï»¿
+
 
 using Element.Demo.Form;
 using Microsoft.AspNetCore.Components;
@@ -17,7 +17,7 @@ namespace Element.Demo.Upload
         Element.MessageBox MessageBox { get; set; }
 
         internal object value;
-        protected BForm demoForm;
+        protected ElForm demoForm;
         protected void Submit()
         {
             if (!demoForm.IsValid())
@@ -35,7 +35,7 @@ namespace Element.Demo.Upload
             value = new UploadActivity()
             {
                 Area = Area.Shanghai,
-                Name = "æµ‹è¯•",
+                Name = "²âÊÔ",
                 Previews = new UploadModel[]
                 {
                     new UploadModel()
