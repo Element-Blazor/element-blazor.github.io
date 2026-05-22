@@ -1,8 +1,8 @@
 <ElTable DataSource="Datas" AutoGenerateColumns="true">
     <ElTableColumns>
         <ElTableTemplateColumn Text="操作" SortNo="-1">
-            <ElButton Type="@ButtonType.Primary" Size="@ButtonSize.Mini" OnClick="@(e=> Edit(context))">编辑</ElButton>
-            <ElButton Type="@ButtonType.Danger" Size="@ButtonSize.Mini" OnClick="@(e=> Del(context))">删除</ElButton>
+            <ElButton Type="@ButtonType.Primary" Size="@ButtonSize.Small" OnClick="@(e=> Edit(context))">编辑</ElButton>
+            <ElButton Type="@ButtonType.Danger" Size="@ButtonSize.Small" OnClick="@(e=> Del(context))">删除</ElButton>
         </ElTableTemplateColumn>
     </ElTableColumns>
 </ElTable>

@@ -6,8 +6,8 @@
         <ElTableDateTimeColumn Width="200" Format="yyyy-MM-dd" Property="@nameof(TestData.Time)" Text="时间"></ElTableDateTimeColumn>
         <ElTableColumn Width="300" Property="@nameof(TestData.Address)" Text="地址"></ElTableColumn>
         <ElTableTemplateColumn Text="操作">
-            <ElButton Type="@ButtonType.Primary" Size="@ButtonSize.Mini" OnClick="@(e=> Edit(context))">编辑</ElButton>
-            <ElButton Type="@ButtonType.Danger" Size="@ButtonSize.Mini" OnClick="@(e=> Del(context))">删除</ElButton>
+            <ElButton Type="@ButtonType.Primary" Size="@ButtonSize.Small" OnClick="@(e=> Edit(context))">编辑</ElButton>
+            <ElButton Type="@ButtonType.Danger" Size="@ButtonSize.Small" OnClick="@(e=> Del(context))">删除</ElButton>
         </ElTableTemplateColumn>
     </ElTableColumns>
 </ElTable>

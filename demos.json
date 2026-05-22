@@ -1,5 +1,17 @@
 ﻿[
   {
+    "name": "theme",
+    "demos": [
+      {
+        "title": "设计令牌",
+        "name": "Theme",
+        "files": [
+          "DesignTokens.razor"
+        ]
+      }
+    ]
+  },
+  {
     "name": "markdowneditor",
     "demos": [
       {

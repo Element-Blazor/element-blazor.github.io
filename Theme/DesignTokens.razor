@@ -1,0 +1,131 @@
+<section class="token-demo">
+    <div class="token-demo__section">
+        <h2>Colors</h2>
+        <div class="token-demo__grid">
+            <div class="token-demo__swatch" style="--token-color: var(--el-color-primary);">Primary</div>
+            <div class="token-demo__swatch" style="--token-color: var(--el-color-success);">Success</div>
+            <div class="token-demo__swatch" style="--token-color: var(--el-color-warning);">Warning</div>
+            <div class="token-demo__swatch" style="--token-color: var(--el-color-danger);">Danger</div>
+            <div class="token-demo__swatch" style="--token-color: var(--el-color-info);">Info</div>
+        </div>
+    </div>
+
+    <div class="token-demo__section">
+        <h2>Typography</h2>
+        <div class="token-demo__type" style="font-size: var(--el-font-size-extra-large);">Extra large token text</div>
+        <div class="token-demo__type" style="font-size: var(--el-font-size-large);">Large token text</div>
+        <div class="token-demo__type" style="font-size: var(--el-font-size-medium);">Medium token text</div>
+        <div class="token-demo__type" style="font-size: var(--el-font-size-base);">Base token text</div>
+    </div>
+
+    <div class="token-demo__section">
+        <h2>Borders And Shadows</h2>
+        <div class="token-demo__grid">
+            <div class="token-demo__surface token-demo__surface--base">Base radius</div>
+            <div class="token-demo__surface token-demo__surface--round">Round radius</div>
+            <div class="token-demo__surface token-demo__surface--shadow">Shadow</div>
+        </div>
+    </div>
+
+    <div class="token-demo__section">
+        <h2>Component Sizes</h2>
+        <div class="token-demo__sizes">
+            <span style="height: var(--el-component-size-large);">Large</span>
+            <span style="height: var(--el-component-size);">Default</span>
+            <span style="height: var(--el-component-size-small);">Small</span>
+        </div>
+    </div>
+
+    <div class="token-demo__section">
+        <h2>Component Samples</h2>
+        <div class="token-demo__controls">
+            <ElButton Type="@ButtonType.Primary">Primary</ElButton>
+            <ElButton Type="@ButtonType.Success" Plain="true">Plain</ElButton>
+            <ElInput TValue="string" Placeholder="Tokenized input" Clearable="true" Style="max-width: 260px;"></ElInput>
+        </div>
+        <ElTable DataSource="@Rows" AutoGenerateColumns="false" Border="true" Stripe="true" Style="margin-top: 16px;">
+            <ElTableColumn Property="@nameof(TokenRow.Name)" Text="Token"></ElTableColumn>
+            <ElTableColumn Property="@nameof(TokenRow.Value)" Text="Value"></ElTableColumn>
+        </ElTable>
+    </div>
+</section>
+
+<style>
+    .token-demo {
+        color: var(--el-text-color-regular);
+        display: grid;
+        gap: 18px;
+    }
+
+    .token-demo__section {
+        border-bottom: var(--el-border);
+        padding-bottom: 16px;
+    }
+
+    .token-demo__section h2 {
+        color: var(--el-text-color-primary);
+        font-size: var(--el-font-size-large);
+        font-weight: var(--el-font-weight-primary);
+        margin: 0 0 12px;
+    }
+
+    .token-demo__grid,
+    .token-demo__controls,
+    .token-demo__sizes {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .token-demo__swatch {
+        background-color: var(--token-color);
+        border-radius: var(--el-border-radius-base);
+        color: var(--el-color-white);
+        min-width: 118px;
+        padding: 14px 16px;
+    }
+
+    .token-demo__type {
+        color: var(--el-text-color-primary);
+        line-height: var(--el-font-line-height-primary);
+        margin: 4px 0;
+    }
+
+    .token-demo__surface {
+        background: var(--el-bg-color);
+        border: var(--el-border);
+        border-radius: var(--el-border-radius-base);
+        min-width: 140px;
+        padding: 18px;
+    }
+
+    .token-demo__surface--round {
+        border-radius: var(--el-border-radius-round);
+    }
+
+    .token-demo__surface--shadow {
+        border-color: transparent;
+        box-shadow: var(--el-box-shadow-light);
+    }
+
+    .token-demo__sizes span {
+        align-items: center;
+        background: var(--el-fill-color-light);
+        border: var(--el-border);
+        border-radius: var(--el-border-radius-base);
+        display: inline-flex;
+        padding: 0 14px;
+    }
+</style>
+
+@code {
+    private readonly IReadOnlyList<TokenRow> Rows = new[]
+    {
+        new TokenRow("--el-color-primary", "var(--el-color-primary)"),
+        new TokenRow("--el-border-radius-base", "var(--el-border-radius-base)"),
+        new TokenRow("--el-box-shadow-light", "var(--el-box-shadow-light)")
+    };
+
+    private sealed record TokenRow(string Name, string Value);
+}
