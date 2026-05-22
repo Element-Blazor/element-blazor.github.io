@@ -9,7 +9,7 @@ using Element;
 
 namespace Element.Demo.Form
 {
-    public partial class AutoGenerateFieldsInitilizeForm : BComponentBase
+    public partial class AutoGenerateFieldsInitilizeForm : ElementComponentBase
     {
         internal LabelAlign formAlign;
         [Inject]

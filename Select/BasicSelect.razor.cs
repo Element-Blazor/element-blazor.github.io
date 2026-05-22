@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Element.Demo.Select
 {
-    public partial class BasicSelect :BComponentBase
+    public partial class BasicSelect :ElementComponentBase
     {
         protected int Value;
 

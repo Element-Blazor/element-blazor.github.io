@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Element;
 namespace Element.Demo.Transfer
 {
-    public partial class FormTransfer : BComponentBase
+    public partial class FormTransfer : ElementComponentBase
     {
         internal ElForm form;
         internal TransferModel value;

@@ -8,7 +8,7 @@ using Element;
 
 namespace Element.Demo.Form
 {
-    public partial class BasicFormBase : BComponentBase
+    public partial class BasicFormBase : ElementComponentBase
     {
         internal LabelAlign formAlign;
         [Inject]

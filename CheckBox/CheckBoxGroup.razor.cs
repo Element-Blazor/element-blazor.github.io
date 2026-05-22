@@ -1,4 +1,4 @@
-ï»¿
+
 
 using Microsoft.AspNetCore.Components;
 using System;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Element;
 namespace Element.Demo.CheckBox
 {
-    public partial class CheckBoxGroup : BComponentBase
+    public partial class CheckBoxGroup : ElementComponentBase
     {
         public Status Status { get; set; }
         public List<string> Values { get; set; }
@@ -20,14 +20,14 @@ namespace Element.Demo.CheckBox
         {
             Values = new List<string>()
 {
-                    "åˆ—è¡¨é€‰é¡¹1",
-                    "åˆ—è¡¨é€‰é¡¹2",
-                    "åˆ—è¡¨é€‰é¡¹3"
+                    "ÁÐ±íÑ¡Ïî1",
+                    "ÁÐ±íÑ¡Ïî2",
+                    "ÁÐ±íÑ¡Ïî3"
                 };
             SelectedValues = new ObservableCollection<string>()
 {
-                "åˆ—è¡¨é€‰é¡¹1",
-                "åˆ—è¡¨é€‰é¡¹3"
+                "ÁÐ±íÑ¡Ïî1",
+                "ÁÐ±íÑ¡Ïî3"
             };
             Status = Status.Indeterminate;
         }

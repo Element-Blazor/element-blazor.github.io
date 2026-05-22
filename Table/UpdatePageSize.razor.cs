@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Element.Demo.Table
 {
-    public partial class UpdatePageSize : BComponentBase
+    public partial class UpdatePageSize : ElementComponentBase
     {
         protected List<AutoGenerateColumnTestData> AllDatas = new List<AutoGenerateColumnTestData>();
         protected List<AutoGenerateColumnTestData> Datas = new List<AutoGenerateColumnTestData>();

@@ -1,4 +1,4 @@
-ï»¿
+
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using System;
@@ -9,11 +9,11 @@ using Element;
 
 namespace Element.Demo.Dialog
 {
-    public partial class NestDialog : BDialogBase
+    public partial class NestDialog : ElementDialogBase
     {
         public async Task ShowDialog(MouseEventArgs eventArgs)
         {
-            var result = await DialogService.ShowDialogAsync<ExampleDialog>("æµ‹è¯•çª—å£");
+            var result = await DialogService.ShowDialogAsync<ExampleDialog>("²âÊÔ´°¿Ú");
         }
     }
 }

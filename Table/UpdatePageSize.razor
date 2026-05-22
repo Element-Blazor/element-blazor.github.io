@@ -1,4 +1,4 @@
-@inherits BComponentBase
+﻿@inherits ElementComponentBase
 输入每页条数：<ElInput TValue="int" @bind-Value="PageSize"></ElInput>
 <ElTable DataSource="Datas" Total="AllDatas.Count" @bind-CurrentPage="CurrentPage" PageSize="PageSize" EnableAlwaysRender="true" @ref="table">
     <ElTableColumns>

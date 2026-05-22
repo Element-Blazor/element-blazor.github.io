@@ -1,4 +1,4 @@
-ï»¿
+
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -8,14 +8,14 @@ using Element;
 
 namespace Element.Demo.Message
 {
-    public partial class BasicMessage : BComponentBase
+    public partial class BasicMessage : ElementComponentBase
     {
         [Inject]
         public MessageService Message { get; set; }
         
         public void ShowMessage()
         {
-            Message.Show("æ™®é€šæ¶ˆæ¯");
+            Message.Show("ÆÕÍ¨ÏûÏ¢");
         }
 
     }

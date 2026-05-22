@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Element.Demo.MarkdownEditor
 {
-    public partial class FormMarkdown : BComponentBase
+    public partial class FormMarkdown : ElementComponentBase
     {
         internal ElForm form;
 

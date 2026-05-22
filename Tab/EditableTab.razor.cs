@@ -1,4 +1,4 @@
-ï»¿
+
 using Element;
 using Microsoft.AspNetCore.Components;
 using System;
@@ -9,30 +9,30 @@ using System.Threading.Tasks;
 
 namespace Element.Demo.Tab
 {
-    public partial class EditableTab : BComponentBase
+    public partial class EditableTab : ElementComponentBase
     {
-        protected BTab tab;
+        protected ElTabs tab;
         protected ObservableCollection<TabOption> models = new ObservableCollection<TabOption>()
 {
         new TabOption
         {
             Name="tab1",
-             Title="é€‰é¡¹å¡1",
-             Content="å†…å®¹1",
+             Title="Ñ¡Ïî¿¨1",
+             Content="ÄÚÈÝ1",
              IsClosable=true
         },
         new TabOption
         {
             Name="tab2",
-            Title="å¡2",
-             Content="å†…å®¹2",
+            Title="¿¨2",
+             Content="ÄÚÈÝ2",
              IsClosable=true
         },
         new TabOption
         {
             Name="tab3",
-            Title="å¡3",
-             Content="å†…å®¹3",
+            Title="¿¨3",
+             Content="ÄÚÈÝ3",
              IsClosable=true
         },
         new TabOption
@@ -47,13 +47,13 @@ namespace Element.Demo.Tab
         {
             models.Add(new TabOption()
             {
-                Content = "å†…å®¹" + models.Count,
+                Content = "ÄÚÈÝ" + models.Count,
                 IsClosable = true,
-                Title = "æ ‡é¢˜" + models.Count,
+                Title = "±êÌâ" + models.Count,
                 IsActive = true
             });
         }
-        protected void RemoveTabCloseAsync(BTabPanel tab)
+        protected void RemoveTabCloseAsync(ElTabPane tab)
         {
             models.Remove(models.FirstOrDefault(x => x.Title == tab.Title));
 

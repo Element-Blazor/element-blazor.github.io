@@ -1,4 +1,4 @@
-﻿
+
 
 using Microsoft.AspNetCore.Components;
 using System;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Element;
 namespace Element.Demo.CheckBox
 {
-    public partial class HardCode : BComponentBase
+    public partial class HardCode : ElementComponentBase
     {
         public object Value { get; set; }
         public Status Status = Status.Checked;

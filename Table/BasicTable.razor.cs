@@ -1,4 +1,4 @@
-ï»¿
+
 
 using Microsoft.AspNetCore.Components;
 using System;
@@ -9,7 +9,7 @@ using Element;
 
 namespace Element.Demo.Table
 {
-    public partial class BasicTable : BDialogBase //æ³¨æ„æ­¤å¤„ç»§æ‰¿ BDialogBase æ˜¯å› ä¸ºè¿™ä¸ªç»„ä»¶ç”¨äºæ¼”ç¤ºå¼¹çª—çš„ï¼Œå› æ­¤éœ€è¦ç»§æ‰¿ BDialogBaseï¼Œé€šå¸¸æƒ…å†µä¸‹ç»§æ‰¿ ComponentBase æˆ– BComponentBase å³å¯
+    public partial class BasicTable : ElementDialogBase //×¢Òâ´Ë´¦¼Ì³Ğ ElementDialogBase ÊÇÒòÎªÕâ¸ö×é¼şÓÃÓÚÑİÊ¾µ¯´°µÄ£¬Òò´ËĞèÒª¼Ì³Ğ ElementDialogBase£¬Í¨³£Çé¿öÏÂ¼Ì³Ğ ComponentBase »ò ElementComponentBase ¼´¿É
     {
         protected int currentPage;
         protected List<TestData> Datas = new List<TestData>();
@@ -22,20 +22,20 @@ namespace Element.Demo.Table
         {
             Datas.Add(new TestData()
             {
-                Address = "åœ°å€1",
-                Name = "å¼ ä¸‰",
+                Address = "µØÖ·1",
+                Name = "ÕÅÈı",
                 Time = DateTime.Now
             });
             Datas.Add(new TestData()
             {
-                Address = "åœ°å€2",
-                Name = "å¼ ä¸‰1",
+                Address = "µØÖ·2",
+                Name = "ÕÅÈı1",
                 Time = DateTime.Now
             });
             Datas.Add(new TestData()
             {
-                Address = "åœ°å€3",
-                Name = "å¼ ä¸‰3",
+                Address = "µØÖ·3",
+                Name = "ÕÅÈı3",
                 Time = DateTime.Now
             });
             LargeDatas.AddRange(Datas);
@@ -46,11 +46,11 @@ namespace Element.Demo.Table
         }
         public void Edit(object testData)
         {
-            MessageService.Show($"æ­£åœ¨ç¼–è¾‘ " + ((TestData)testData).Name);
+            MessageService.Show($"ÕıÔÚ±à¼­ " + ((TestData)testData).Name);
         }
         public void Del(object testData)
         {
-            MessageService.Show($"æ­£åœ¨åˆ é™¤ " + ((TestData)testData).Name, MessageType.Warning);
+            MessageService.Show($"ÕıÔÚÉ¾³ı " + ((TestData)testData).Name, MessageType.Warning);
         }
     }
 }
