@@ -1,0 +1,26 @@
+<ElSplitter Style="height:240px;">
+    <ElSplitterPanel Size="220px" Min="120px">
+        <div class="splitter-pane">Left</div>
+    </ElSplitterPanel>
+    <ElSplitterPanel>
+        <div class="splitter-pane splitter-pane--main">Center</div>
+    </ElSplitterPanel>
+    <ElSplitterPanel Size="180px" Min="100px">
+        <div class="splitter-pane">Right</div>
+    </ElSplitterPanel>
+</ElSplitter>
+
+<style>
+    .splitter-pane {
+        align-items: center;
+        background: var(--el-fill-color-light);
+        display: flex;
+        height: 100%;
+        justify-content: center;
+    }
+
+    .splitter-pane--main {
+        background: var(--el-color-primary-light-9);
+        color: var(--el-color-primary);
+    }
+</style>

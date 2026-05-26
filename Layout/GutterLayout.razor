@@ -1,0 +1,28 @@
+<div class="grid-demo">
+    <ElRow Gutter="20">
+        <ElCol Span="6"><div>6</div></ElCol>
+        <ElCol Span="6"><div>6</div></ElCol>
+        <ElCol Span="6"><div>6</div></ElCol>
+        <ElCol Span="6"><div>6</div></ElCol>
+    </ElRow>
+    <ElRow Gutter="20" Justify="@RowJustify.SpaceBetween">
+        <ElCol Span="6"><div>Start</div></ElCol>
+        <ElCol Span="6"><div>End</div></ElCol>
+    </ElRow>
+</div>
+
+<style>
+    .grid-demo {
+        display: grid;
+        gap: 14px;
+    }
+
+    .grid-demo .el-col > div {
+        background: var(--el-fill-color-light);
+        border: var(--el-border);
+        border-radius: var(--el-border-radius-base);
+        min-height: 42px;
+        padding: 11px 14px;
+        text-align: center;
+    }
+</style>

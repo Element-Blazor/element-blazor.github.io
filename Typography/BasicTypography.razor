@@ -1,0 +1,39 @@
+<div class="typography-demo">
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <p>Element-Blazor uses Element Plus text tokens for font family, size, weight, line height and text colors.</p>
+    <ElSpace Wrap="true">
+        <ElText Type="@TextType.Primary">Primary</ElText>
+        <ElText Type="@TextType.Success">Success</ElText>
+        <ElText Type="@TextType.Warning">Warning</ElText>
+        <ElText Type="@TextType.Danger">Danger</ElText>
+    </ElSpace>
+</div>
+
+<style>
+    .typography-demo {
+        color: var(--el-text-color-regular);
+        display: grid;
+        gap: 10px;
+    }
+
+    .typography-demo h1,
+    .typography-demo h2,
+    .typography-demo p {
+        margin: 0;
+    }
+
+    .typography-demo h1 {
+        color: var(--el-text-color-primary);
+        font-size: var(--el-font-size-extra-large);
+        font-weight: var(--el-font-weight-primary);
+        line-height: var(--el-font-line-height-primary);
+    }
+
+    .typography-demo h2 {
+        color: var(--el-text-color-primary);
+        font-size: var(--el-font-size-large);
+        font-weight: var(--el-font-weight-primary);
+        line-height: var(--el-font-line-height-primary);
+    }
+</style>

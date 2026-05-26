@@ -1,0 +1,26 @@
+<ElScrollbar Height="220px" Always="true" Style="border:var(--el-border);border-radius:var(--el-border-radius-base);">
+    <div class="scrollbar-demo">
+        @foreach (var item in Items)
+        {
+            <div>@item</div>
+        }
+    </div>
+</ElScrollbar>
+
+<style>
+    .scrollbar-demo {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .scrollbar-demo div {
+        background: var(--el-fill-color-light);
+        border-radius: var(--el-border-radius-base);
+        padding: 10px 12px;
+    }
+</style>
+
+@code {
+    private readonly IReadOnlyList<string> Items = Enumerable.Range(1, 12).Select(x => $"Item {x}").ToArray();
+}

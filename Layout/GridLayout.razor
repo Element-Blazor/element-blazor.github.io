@@ -1,0 +1,35 @@
+<div class="grid-demo">
+    <ElRow>
+        <ElCol Span="24"><div>24</div></ElCol>
+    </ElRow>
+    <ElRow>
+        <ElCol Span="12"><div>12</div></ElCol>
+        <ElCol Span="12"><div>12</div></ElCol>
+    </ElRow>
+    <ElRow>
+        <ElCol Span="8"><div>8</div></ElCol>
+        <ElCol Span="8"><div>8</div></ElCol>
+        <ElCol Span="8"><div>8</div></ElCol>
+    </ElRow>
+</div>
+
+<style>
+    .grid-demo {
+        display: grid;
+        gap: 12px;
+    }
+
+    .grid-demo .el-col > div {
+        background: var(--el-color-primary-light-8);
+        border-radius: var(--el-border-radius-base);
+        color: var(--el-color-primary);
+        min-height: 42px;
+        padding: 11px 14px;
+        text-align: center;
+    }
+
+    .grid-demo .el-row:nth-child(2) .el-col > div {
+        background: var(--el-color-success-light-9);
+        color: var(--el-color-success);
+    }
+</style>

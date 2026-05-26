@@ -1,0 +1,17 @@
+<div class="basic-demo-stack">
+    <ElSpace Wrap="true">
+        <ElButton Type="@ButtonType.Primary" Icon="el-icon-edit">带图标</ElButton>
+        <ElButton Type="@ButtonType.Success" Link="true" Href="https://element-plus.org" Target="_blank" Tag="a">链接按钮</ElButton>
+        <ElButton Type="@ButtonType.Warning" Text="true" Bg="true">文字背景</ElButton>
+        <ElButton Color="#626aef">自定义色</ElButton>
+        <ElButton Tag="a" Href="#button-api" Type="@ButtonType.Info">锚点按钮</ElButton>
+        <ElButton Loading="true" LoadingIcon="el-icon-loading">保存中</ElButton>
+    </ElSpace>
+</div>
+
+<style>
+    .basic-demo-stack {
+        display: grid;
+        gap: 14px;
+    }
+</style>

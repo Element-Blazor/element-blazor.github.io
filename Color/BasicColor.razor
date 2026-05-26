@@ -1,0 +1,54 @@
+<div class="color-demo">
+    @foreach (var color in Colors)
+    {
+        <div class="color-demo__group">
+            <div class="color-demo__main" style="background: var(@color.Token)">@color.Name</div>
+            <div class="color-demo__steps">
+                <span style="background: var(@($"{color.Token}-light-9"))"></span>
+                <span style="background: var(@($"{color.Token}-light-7"))"></span>
+                <span style="background: var(@($"{color.Token}-light-5"))"></span>
+                <span style="background: var(@($"{color.Token}-light-3"))"></span>
+                <span style="background: var(@($"{color.Token}-dark-2"))"></span>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .color-demo {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .color-demo__group {
+        border: var(--el-border);
+        border-radius: var(--el-border-radius-base);
+        overflow: hidden;
+    }
+
+    .color-demo__main {
+        color: var(--el-color-white);
+        font-weight: var(--el-font-weight-primary);
+        padding: 18px;
+    }
+
+    .color-demo__steps {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        height: 34px;
+    }
+</style>
+
+@code {
+    private readonly IReadOnlyList<ColorItem> Colors = new[]
+    {
+        new ColorItem("Primary", "--el-color-primary"),
+        new ColorItem("Success", "--el-color-success"),
+        new ColorItem("Warning", "--el-color-warning"),
+        new ColorItem("Danger", "--el-color-danger"),
+        new ColorItem("Info", "--el-color-info")
+    };
+
+    private sealed record ColorItem(string Name, string Token);
+}

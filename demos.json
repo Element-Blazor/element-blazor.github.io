@@ -507,7 +507,162 @@
         "title": "按钮大小",
         "name": "Button",
         "files": [
-          "ButtonSize.razor"
+          "ButtonSizeDemo.razor"
+        ]
+      },
+      {
+        "title": "扩展能力",
+        "name": "Button",
+        "files": [
+          "ButtonApi.razor"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "border",
+    "demos": [
+      {
+        "title": "边框令牌",
+        "name": "Border",
+        "files": [
+          "BasicBorder.razor"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "color",
+    "demos": [
+      {
+        "title": "色彩令牌",
+        "name": "Color",
+        "files": [
+          "BasicColor.razor"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "container",
+    "demos": [
+      {
+        "title": "基础容器",
+        "name": "Container",
+        "files": [
+          "BasicContainer.razor"
+        ]
+      },
+      {
+        "title": "嵌套容器",
+        "name": "Container",
+        "files": [
+          "NestedContainer.razor"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "icon",
+    "demos": [
+      {
+        "title": "基础图标",
+        "name": "Icon",
+        "files": [
+          "BasicIcon.razor"
+        ]
+      },
+      {
+        "title": "图标样式",
+        "name": "Icon",
+        "files": [
+          "IconStyle.razor"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "link",
+    "demos": [
+      {
+        "title": "基础链接",
+        "name": "Link",
+        "files": [
+          "BasicLink.razor"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "text",
+    "demos": [
+      {
+        "title": "基础文本",
+        "name": "Text",
+        "files": [
+          "BasicText.razor"
+        ]
+      },
+      {
+        "title": "省略文本",
+        "name": "Text",
+        "files": [
+          "TextTruncate.razor"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "scrollbar",
+    "demos": [
+      {
+        "title": "基础滚动条",
+        "name": "Scrollbar",
+        "files": [
+          "BasicScrollbar.razor"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "space",
+    "demos": [
+      {
+        "title": "基础间距",
+        "name": "Space",
+        "files": [
+          "BasicSpace.razor"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "splitter",
+    "demos": [
+      {
+        "title": "水平分隔",
+        "name": "Splitter",
+        "files": [
+          "BasicSplitter.razor"
+        ]
+      },
+      {
+        "title": "垂直分隔",
+        "name": "Splitter",
+        "files": [
+          "VerticalSplitter.razor"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "typography",
+    "demos": [
+      {
+        "title": "排版令牌",
+        "name": "Typography",
+        "files": [
+          "BasicTypography.razor"
         ]
       }
     ]

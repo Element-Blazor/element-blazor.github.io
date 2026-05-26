@@ -1,12 +1,12 @@
- <p>
-    <ElButton>默认按钮</ElButton>
-    <ElButton Type="@ButtonType.Primary" Size="@Element.ButtonSize.Large">中型按钮</ElButton>
-    <ElButton Type="@ButtonType.Success" Size="@Element.ButtonSize.Small">小型按钮</ElButton>
-    <ElButton Type="@ButtonType.Info" Size="@Element.ButtonSize.Small">迷你按钮</ElButton>
-</p>
-<p>
-    <ElButton Round="true">默认按钮</ElButton>
-    <ElButton Round="true" Type="@ButtonType.Primary" Size="@Element.ButtonSize.Large">中型按钮</ElButton>
-    <ElButton Round="true" Type="@ButtonType.Success" Size="@Element.ButtonSize.Small">小型按钮</ElButton>
-    <ElButton Round="true" Type="@ButtonType.Info" Size="@Element.ButtonSize.Small">迷你按钮</ElButton>
-</p>
+﻿<ElSpace Direction="@SpaceDirection.Vertical" Alignment="@SpaceAlignment.Start">
+    <ElSpace Wrap="true">
+        <ElButton Type="@ButtonType.Primary" Size="@Element.ButtonSize.Large">大型按钮</ElButton>
+        <ElButton Type="@ButtonType.Primary">默认按钮</ElButton>
+        <ElButton Type="@ButtonType.Primary" Size="@Element.ButtonSize.Small">小型按钮</ElButton>
+    </ElSpace>
+    <ElSpace Wrap="true">
+        <ElButton Round="true" Size="@Element.ButtonSize.Large">大型圆角</ElButton>
+        <ElButton Round="true">默认圆角</ElButton>
+        <ElButton Round="true" Size="@Element.ButtonSize.Small">小型圆角</ElButton>
+    </ElSpace>
+</ElSpace>

@@ -1,0 +1,38 @@
+<div class="border-demo">
+    <div class="border-demo__item">Base</div>
+    <div class="border-demo__item border-demo__item--round">Round</div>
+    <div class="border-demo__item border-demo__item--shadow">Shadow</div>
+    <div class="border-demo__item border-demo__item--dashed">Dashed</div>
+</div>
+
+<style>
+    .border-demo {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    .border-demo__item {
+        align-items: center;
+        background: var(--el-bg-color);
+        border: var(--el-border);
+        border-radius: var(--el-border-radius-base);
+        color: var(--el-text-color-primary);
+        display: flex;
+        min-height: 86px;
+        justify-content: center;
+    }
+
+    .border-demo__item--round {
+        border-radius: var(--el-border-radius-round);
+    }
+
+    .border-demo__item--shadow {
+        border-color: transparent;
+        box-shadow: var(--el-box-shadow-light);
+    }
+
+    .border-demo__item--dashed {
+        border-style: dashed;
+    }
+</style>
