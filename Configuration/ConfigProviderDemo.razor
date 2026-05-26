@@ -1,0 +1,47 @@
+<ElConfigProvider Size="@ElementSize.Large" ZIndex="3500" Locale="en-US">
+    <ElSpace Direction="@SpaceDirection.Vertical" Alignment="@SpaceAlignment.Start">
+        <ElSpace Wrap="true">
+            <ElButton Type="@ButtonType.Primary">Large from provider</ElButton>
+            <ElInput TValue="string" Placeholder="Large input from provider" Clearable="true" Style="width:260px;"></ElInput>
+            <ElSelect TValue="string" Placeholder="Large select from provider" Style="width:220px;">
+                <ElOption Value="@("alpha")" Text="Alpha"></ElOption>
+                <ElOption Value="@("beta")" Text="Beta"></ElOption>
+            </ElSelect>
+        </ElSpace>
+
+        <ElTable DataSource="@Rows" AutoGenerateColumns="false" Border="true" Stripe="true" Style="max-width:520px;">
+            <ElTableColumn Property="@nameof(ConfigRow.Name)" Text="Config"></ElTableColumn>
+            <ElTableColumn Property="@nameof(ConfigRow.Value)" Text="Value"></ElTableColumn>
+        </ElTable>
+
+        <ElButton Type="@ButtonType.Success" OnClick="OpenDialog">Open configured dialog</ElButton>
+    </ElSpace>
+
+    <ElDialog @bind-ModelValue="dialogVisible" Title="Configured dialog" Width="420px">
+        <p>Dialog z-index starts from the provider baseline.</p>
+        <ElButton Type="@ButtonType.Primary" OnClick="CloseDialog">Close</ElButton>
+    </ElDialog>
+</ElConfigProvider>
+
+@code {
+    private bool dialogVisible;
+
+    private readonly IReadOnlyList<ConfigRow> Rows = new[]
+    {
+        new ConfigRow("Size", "Large"),
+        new ConfigRow("ZIndex", "3500"),
+        new ConfigRow("Locale", "en-US")
+    };
+
+    private void OpenDialog()
+    {
+        dialogVisible = true;
+    }
+
+    private void CloseDialog()
+    {
+        dialogVisible = false;
+    }
+
+    private sealed record ConfigRow(string Name, string Value);
+}
