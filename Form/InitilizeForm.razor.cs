@@ -1,22 +1,20 @@
-
-
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Element;
 
 namespace Element.Demo.Form
 {
     public partial class InitilizeForm : ElementComponentBase
     {
         internal LabelAlign formAlign;
+
         [Inject]
         Element.MessageBox MessageBox { get; set; }
 
         internal object value;
+
         protected ElForm demoForm;
+
         protected void Submit()
         {
             if (!demoForm.IsValid())
@@ -36,14 +34,15 @@ namespace Element.Demo.Form
                 Resource1 = Resource.Option2,
                 Area = Area.Shanghai,
                 Delivery = true,
-                Description = "ÏêÇé",
-                Name = "²âÊÔ",
-                Resource = "³¡µØ",
-                Time = DateTime.Now,
-                Type = new List<string>()
-                 {
-                     "Offline","Online"
-                 }
+                Description = "è¯¦æƒ…",
+                Name = "æµ‹è¯•",
+                Resource = "åœºåœ°",
+                Time = DateTime.Today,
+                Type = new List<string>
+                {
+                    "Offline",
+                    "Online"
+                }
             };
         }
 

@@ -181,48 +181,57 @@
   {
     "name": "form",
     "demos": [
-      //{
-      //  "title": "基础用法",
-      //  "name": "Form",
-      //  "files": [
-      //    "BasicForm.razor",
-      //    "BasicFormrazor.cs",
-      //    "Activity.cs"
-      //  ]
-      //},
-      //{
-      //  "title": "行内表单",
-      //  "name": "Form",
-      //  "files": [
-      //    "InlineForm.razor",
-      //    "InlineFormrazor.cs",
-      //    "Activity.cs"
-      //  ]
-      //},
-      //{
-      //  "title": "表单对齐",
-      //  "name": "Form",
-      //  "files": [
-      //    "AlignForm.razor",
-      //    "BasicFormrazor.cs",
-      //    "Activity.cs"
-      //  ]
-      //},
-      //{
-      //  "title": "表单双向绑定",
-      //  "name": "Form",
-      //  "files": [
-      //    "InitilizeForm.razor",
-      //    "InitilizeFormrazor.cs",
-      //    "Activity.cs"
-      //  ]
-      //},
+      {
+        "title": "基础用法",
+        "name": "Form",
+        "files": [
+          "BasicForm.razor",
+          "BasicForm.razor.cs",
+          "Activity.cs"
+        ]
+      },
+      {
+        "title": "行内表单",
+        "name": "Form",
+        "files": [
+          "InlineForm.razor",
+          "InlineForm.razor.cs",
+          "Activity.cs"
+        ]
+      },
+      {
+        "title": "表单对齐",
+        "name": "Form",
+        "files": [
+          "AlignForm.razor",
+          "BasicForm.razor.cs",
+          "Activity.cs"
+        ]
+      },
+      {
+        "title": "表单双向绑定",
+        "name": "Form",
+        "files": [
+          "InitilizeForm.razor",
+          "InitilizeForm.razor.cs",
+          "Activity.cs"
+        ]
+      },
+      {
+        "title": "表单校验",
+        "name": "Form",
+        "files": [
+          "ValidationForm.razor",
+          "ValidationForm.razor.cs",
+          "Activity.cs"
+        ]
+      },
       {
         "title": "隐藏表单项",
         "name": "Form",
         "files": [
           "HiddenFormItem.razor",
-          "BasicFormrazor.cs",
+          "BasicForm.razor.cs",
           "Activity.cs"
         ]
       },
@@ -236,8 +245,7 @@
         ]
       }
     ]
-  },
-  {
+  },  {
     "name": "layout",
     "demos": [
       {

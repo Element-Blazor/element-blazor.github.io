@@ -5,14 +5,14 @@
     <ElFormItem TValue="DateTime?" Label="活动时间" Required="true" Prop="@nameof(Activity.Time)">
         <ElDatePicker></ElDatePicker>
     </ElFormItem>
-    <ElFormItem TValue="bool" Label="即时配�? Required="true" Prop="@nameof(Activity.Delivery)">
+    <ElFormItem TValue="bool" Label="即时配送" Required="true" Prop="@nameof(Activity.Delivery)">
         <ElSwitch TValue="bool" ActiveValue="true" InactiveValue="false"></ElSwitch>
     </ElFormItem>
     <ElFormItem TValue="string" Label="活动形式" Required="true" Prop="@nameof(Activity.Description)">
         <ElInput TValue="string" Type="@InputType.Textarea"></ElInput>
     </ElFormItem>
-    <ElFormItem TValue="object">
-        <ElButton Type="@ButtonType.Primary" OnClick="e=>Submit()">立即创建</ElButton>
-        <ElButton OnClick="e=>Reset()">重置</ElButton>
-    </ElFormItem>
+    <ElFormActionItem>
+        <ElButton Type="@ButtonType.Primary" OnClick="e => Submit()">查询</ElButton>
+        <ElButton OnClick="e => Reset()">重置</ElButton>
+    </ElFormActionItem>
 </ElForm>

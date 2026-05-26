@@ -1,0 +1,29 @@
+@inherits ValidationFormBase
+
+<ElForm Style="width:460px;" @ref="demoForm" Model="model" LabelAlign="LabelAlign.Left" LabelWidth="100" StatusIcon="true" ScrollToError="true" OnValidate="OnValidateAsync">
+    <ElFormItem TValue="string" Label="活动名称" Prop="@nameof(Activity.Name)" Required="true" RequiredMessage="请输入活动名称">
+        <ElInput TValue="string" Clearable="true"></ElInput>
+    </ElFormItem>
+    <ElFormItem TValue="DateTime?" Label="活动时间" Prop="@nameof(Activity.Time)" Required="true">
+        <ElDatePicker></ElDatePicker>
+    </ElFormItem>
+    <ElFormItem TValue="IEnumerable<string>" Label="活动性质" Prop="@nameof(Activity.Type)" Required="true">
+        <ElCheckboxGroup TValue="string">
+            <ElCheckbox TValue="object" Model="@("Online")">线上活动</ElCheckbox>
+            <ElCheckbox TValue="object" Model="@("Offline")">线下活动</ElCheckbox>
+        </ElCheckboxGroup>
+    </ElFormItem>
+    <ElFormItem TValue="string" Label="活动形式" Prop="@nameof(Activity.Description)" Required="true">
+        <ElInput TValue="string" Type="@InputType.Textarea" Rows="3"></ElInput>
+    </ElFormItem>
+    <ElFormActionItem>
+        <ElButton Type="@ButtonType.Primary" OnClick="e => Submit()">提交</ElButton>
+        <ElButton OnClick="e => ValidateName()">校验名称</ElButton>
+        <ElButton OnClick="e => ClearValidate()">清除校验</ElButton>
+        <ElButton OnClick="e => Reset()">重置</ElButton>
+    </ElFormActionItem>
+</ElForm>
+
+<div style="margin-left:100px;color:#606266;line-height:24px;">
+    最近校验：@lastValidateMessage
+</div>

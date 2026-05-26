@@ -1,23 +1,22 @@
-@inherits Element.Demo.Form.BasicForm
+@inherits BasicFormBase
 
 <ElRadioGroup TValue="LabelAlign" @bind-SelectedValue="formAlign">
-    <ElRadioButton TValue="object" Model="LabelAlign.Left">左对�</ElRadioButton>
-    <ElRadioButton TValue="object" Model="LabelAlign.Right">右对�</ElRadioButton>
+    <ElRadioButton TValue="object" Model="LabelAlign.Left">左对齐</ElRadioButton>
+    <ElRadioButton TValue="object" Model="LabelAlign.Right">右对齐</ElRadioButton>
     <ElRadioButton TValue="object" Model="LabelAlign.Top">顶部对齐</ElRadioButton>
 </ElRadioGroup>
 <br />
-<ElForm Style="width:400px;" @ref="demoForm" LabelPosition="formAlign">
+<ElForm Style="width:400px;" @ref="demoForm" LabelPosition="formAlign" LabelWidth="100">
     <ElFormItem TValue="string" Label="活动名称" Prop="@nameof(Activity.Name)" Required="true">
         <ElInput TValue="string"></ElInput>
     </ElFormItem>
     <ElFormItem TValue="Area" Label="活动区域" Prop="@nameof(Activity.Area)" Required="true">
-        <ElSelect TValue="Area" Placeholder="请选择活动区域">
-        </ElSelect>
+        <ElSelect TValue="Area" Placeholder="请选择活动区域"></ElSelect>
     </ElFormItem>
     <ElFormItem TValue="DateTime?" Label="活动时间" Required="true" Prop="@nameof(Activity.Time)">
         <ElDatePicker></ElDatePicker>
     </ElFormItem>
-    <ElFormItem TValue="bool" Label="即时配�? Required="true" Prop="@nameof(Activity.Delivery)">
+    <ElFormItem TValue="bool" Label="即时配送" Required="true" Prop="@nameof(Activity.Delivery)">
         <ElSwitch TValue="bool" ActiveValue="true" InactiveValue="false"></ElSwitch>
     </ElFormItem>
     <ElFormItem TValue="IEnumerable<string>" Label="活动性质" Required="true" Prop="@nameof(Activity.Type)">
@@ -33,8 +32,8 @@
     <ElFormItem TValue="string" Label="活动形式" Required="true" Prop="@nameof(Activity.Description)">
         <ElInput TValue="string" Type="@InputType.Textarea"></ElInput>
     </ElFormItem>
-    <ElFormItem TValue="object">
-        <ElButton Type="@ButtonType.Primary" OnClick="e=>Submit()">立即创建</ElButton>
-        <ElButton OnClick="e=>Reset()">重置</ElButton>
-    </ElFormItem>
+    <ElFormActionItem>
+        <ElButton Type="@ButtonType.Primary" OnClick="e => Submit()">立即创建</ElButton>
+        <ElButton OnClick="e => Reset()">重置</ElButton>
+    </ElFormActionItem>
 </ElForm>

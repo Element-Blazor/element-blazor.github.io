@@ -1,23 +1,27 @@
-﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Element.Demo.Form
 {
     public class Activity
     {
         public string Name { get; set; }
+
         public Area Area { get; set; }
+
         public Area? Area1 { get; set; }
+
         public DateTime? Time { get; set; }
+
         public bool Delivery { get; set; }
+
         public List<string> Type { get; set; }
+
         public string Resource { get; set; }
 
         public Resource Resource1 { get; set; }
+
         public string Description { get; set; }
 
         public override string ToString()
@@ -36,6 +40,7 @@ namespace Element.Demo.Form
     {
         [Description("北京")]
         Bejing = 0,
+
         [Description("上海")]
         Shanghai = 1
     }
