@@ -1,0 +1,35 @@
+<ElWatermark Content="Element Blazor"
+             Width="160"
+             Height="80"
+             Rotate="-18"
+             ZIndex="8"
+             Gap="@(new[] { 48, 32 })"
+             Font="TextFont">
+    <div class="demo-watermark__panel">
+        <h3>Watermark container</h3>
+        <p>Content stays interactive and readable while the watermark layer repeats above it.</p>
+        <ElButton Type="@ButtonType.Primary">Primary action</ElButton>
+    </div>
+</ElWatermark>
+
+<ElWatermark Image="@ImageWatermark"
+             Width="96"
+             Height="48"
+             Gap="@(new[] { 56, 36 })"
+             Offset="@(new[] { 20, 16 })"
+             ZIndex="6">
+    <div class="demo-watermark__image">
+        Image watermark with custom gap and offset.
+    </div>
+</ElWatermark>
+
+@code {
+    private WatermarkFont TextFont { get; } = new WatermarkFont
+    {
+        Color = "rgba(64,158,255,.26)",
+        FontSize = 18,
+        FontWeight = "600"
+    };
+
+    private const string ImageWatermark = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='48' viewBox='0 0 96 48'%3E%3Crect width='96' height='48' rx='6' fill='%23409eff' fill-opacity='.14'/%3E%3Ctext x='48' y='30' text-anchor='middle' fill='%23409eff' font-size='16' font-family='Arial'%3EEL%3C/text%3E%3C/svg%3E";
+}

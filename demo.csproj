@@ -102,6 +102,9 @@
     <None Include="Feedback\ServiceFeedback.razor">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Watermark\BasicWatermark.razor">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Form\AlignForm.razor">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
