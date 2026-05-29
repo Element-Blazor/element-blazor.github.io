@@ -1,0 +1,62 @@
+<div class="demo-feedback">
+    <div class="demo-feedback__row">
+        <ElButton OnClick="ShowMessage">Message</ElButton>
+        <ElButton Type="@ButtonType.Success" OnClick="ShowNotification">Notification</ElButton>
+        <ElButton Type="@ButtonType.Warning" OnClick="ShowPrompt">Prompt</ElButton>
+        <ElButton Type="@ButtonType.Primary" OnClick="ShowLoading">Fullscreen loading</ElButton>
+    </div>
+
+    <ElLoading Loading="true" Text="Local loading" Background="rgba(255,255,255,.72)" Style="height:120px;margin-top:16px;border:1px solid var(--el-border-color);">
+        <div style="padding:20px">Wrapped content remains visible under the loading mask.</div>
+    </ElLoading>
+</div>
+
+@code {
+    [Inject]
+    private MessageService Message { get; set; }
+
+    [Inject]
+    private NotificationService Notification { get; set; }
+
+    [Inject]
+    private MessageBox MessageBox { get; set; }
+
+    [Inject]
+    private LoadingService Loading { get; set; }
+
+    private void ShowMessage()
+    {
+        Message.Show(new MessageInfo
+        {
+            Message = "Grouped plain message",
+            Type = MessageType.Info,
+            Plain = true,
+            Grouping = true,
+            ShowClose = true
+        });
+    }
+
+    private void ShowNotification()
+    {
+        Notification.Show(new NotificationOption
+        {
+            Title = "Notification",
+            Message = "This comes from NotificationService.",
+            Type = MessageType.Success,
+            Duration = 0
+        });
+    }
+
+    private async Task ShowPrompt()
+    {
+        var result = await MessageBox.PromptAsync("Enter a value", "Prompt");
+        Message.Show($"Result: {result.Result}, Value: {result.Value}");
+    }
+
+    private async Task ShowLoading()
+    {
+        var option = Loading.ShowFullscreen("Loading", "el-icon-loading", "rgba(0,0,0,.35)");
+        await Task.Delay(1200);
+        Loading.Close(option);
+    }
+}

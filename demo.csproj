@@ -96,6 +96,12 @@
     <None Include="DropDown\BasicDropDown.razor">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Feedback\BasicFeedback.razor">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Feedback\ServiceFeedback.razor">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Form\AlignForm.razor">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -1,0 +1,47 @@
+<div class="demo-feedback">
+    <ElAlert Title="Success alert" Description="Static feedback with icon and close action." Type="@MessageType.Success" ShowIcon="true"></ElAlert>
+    <ElAlert Title="Warning alert" Type="@MessageType.Warning" Effect="@AlertEffect.Dark" ShowIcon="true" Style="margin-top:12px"></ElAlert>
+
+    <div class="demo-feedback__row">
+        <ElTooltip Content="Tooltip text" Placement="top">
+            <ElButton>Hover tooltip</ElButton>
+        </ElTooltip>
+
+        <ElPopover Title="Popover" Content="Popover content supports title, body and trigger control." Width="220">
+            <ElButton>Click popover</ElButton>
+        </ElPopover>
+
+        <ElPopconfirm Title="Confirm this action?" OnConfirm="ConfirmPop">
+            <ElButton Type="@ButtonType.Danger">Popconfirm</ElButton>
+        </ElPopconfirm>
+
+        <ElButton Type="@ButtonType.Primary" OnClick="OpenDrawer">Open drawer</ElButton>
+    </div>
+
+    <ElDrawer @bind-ModelValue="drawerVisible" Title="Drawer" Size="360px">
+        <p>Drawer supports direction, size, modal close, escape close and before-close hooks.</p>
+        <ElButton Type="@ButtonType.Primary" OnClick="CloseDrawer">Close</ElButton>
+    </ElDrawer>
+</div>
+
+@code {
+    private bool drawerVisible;
+
+    [Inject]
+    private MessageService Message { get; set; }
+
+    private void OpenDrawer()
+    {
+        drawerVisible = true;
+    }
+
+    private void CloseDrawer()
+    {
+        drawerVisible = false;
+    }
+
+    private void ConfirmPop()
+    {
+        Message.Show("Confirmed", MessageType.Success);
+    }
+}

@@ -12,6 +12,25 @@
     ]
   },
   {
+    "name": "feedback",
+    "demos": [
+      {
+        "title": "基础反馈",
+        "name": "Feedback",
+        "files": [
+          "BasicFeedback.razor"
+        ]
+      },
+      {
+        "title": "服务式反馈",
+        "name": "Feedback",
+        "files": [
+          "ServiceFeedback.razor"
+        ]
+      }
+    ]
+  },
+  {
     "name": "markdowneditor",
     "demos": [
       {
