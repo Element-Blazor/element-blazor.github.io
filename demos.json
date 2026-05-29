@@ -12,6 +12,25 @@
     ]
   },
   {
+    "name": "x",
+    "demos": [
+      {
+        "title": "X 组件基础组合",
+        "name": "X",
+        "files": [
+          "BasicX.razor"
+        ]
+      },
+      {
+        "title": "AI 工作台演示",
+        "name": "X",
+        "files": [
+          "AiWorkspace.razor"
+        ]
+      }
+    ]
+  },
+  {
     "name": "feedback",
     "demos": [
       {

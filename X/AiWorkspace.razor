@@ -1,0 +1,155 @@
+@inherits ElementComponentBase
+
+<section class="x-ai-demo">
+    <aside class="x-ai-demo__aside">
+        <ElButton Type="@ButtonType.Primary" Icon="el-icon-plus" Style="width:100%;">新建会话</ElButton>
+        <ElXConversations Items="@Conversations" ActiveId="@ActiveConversationId" ActiveIdChanged="OnConversationChanged" />
+    </aside>
+
+    <main class="x-ai-demo__main">
+        <ElXWelcome Title="RuoYi Element AI in Blazor"
+                    Description="这是 ruoyi-element-ai 的本地离线演示骨架：会话、欢迎、提示词、思考链、消息气泡和输入区都来自本项目 ElX 组件。"
+                    Icon="cpu">
+            <Actions>
+                <ElButton Type="@ButtonType.Primary" Plain="true">本地模拟</ElButton>
+                <ElButton Plain="true">可接真实后端</ElButton>
+            </Actions>
+        </ElXWelcome>
+
+        <ElXPrompts Items="@Prompts" OnSelect="UsePrompt" />
+
+        <ElXBubbleList Items="@Messages" Style="min-height:360px;" />
+
+        <ElXThinking Title="模型思考"
+                     Duration="1.2s"
+                     Loading="@Thinking"
+                     Content="分析当前会话、提示词和附件上下文，生成分阶段执行建议。" />
+
+        <ElXThoughtChain Items="@Thoughts" />
+
+        <ElXSender Value="@Draft"
+                   ValueChanged="value => Draft = value"
+                   OnSubmit="SendAsync"
+                   OnStop="StopAsync"
+                   Loading="@Sending"
+                   Placeholder="输入消息，Enter 发送，Shift+Enter 换行">
+            <Prefix>
+                <ElIcon Name="chat-line-round" />
+            </Prefix>
+            <Footer>
+                <ElButton Text="true" Icon="el-icon-paperclip">附件</ElButton>
+                <ElButton Text="true" Icon="el-icon-magic-stick">优化</ElButton>
+            </Footer>
+        </ElXSender>
+    </main>
+</section>
+
+<style>
+    .x-ai-demo {
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+        gap: 18px;
+        min-height: 720px;
+    }
+
+    .x-ai-demo__aside,
+    .x-ai-demo__main {
+        border: 1px solid var(--el-border-color-lighter);
+        border-radius: var(--el-border-radius-base);
+        background: var(--el-fill-color-blank);
+    }
+
+    .x-ai-demo__aside {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding: 14px;
+    }
+
+    .x-ai-demo__main {
+        display: grid;
+        gap: 16px;
+        min-width: 0;
+        padding: 18px;
+    }
+
+    @@media (max-width: 920px) {
+        .x-ai-demo {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+@code {
+    private string ActiveConversationId = "roadmap";
+    private string Draft = "请继续实现 Sender 和附件上传。";
+    private bool Sending;
+    private bool Thinking = true;
+
+    private readonly List<XConversationItem> Conversations = new()
+    {
+        new XConversationItem { Id = "roadmap", Title = "X 组件路线", Description = "组件矩阵与防偏约束", Group = "Today", Pinned = true },
+        new XConversationItem { Id = "demo", Title = "AI 工作台", Description = "ruoyi-element-ai 复刻", Group = "Today" },
+        new XConversationItem { Id = "docs", Title = "文档站首页", Description = "v2 风格对齐", Group = "Later" }
+    };
+
+    private readonly List<XPromptItem> Prompts = new()
+    {
+        new XPromptItem { Id = "summarize", Title = "总结当前路线", Description = "输出可执行验收项", Icon = "document" },
+        new XPromptItem { Id = "implement", Title = "继续编码", Description = "按 X1 -> X2 顺序推进", Icon = "magic-stick" },
+        new XPromptItem { Id = "verify", Title = "生成测试", Description = "为交互组件补 bUnit", Icon = "circle-check" }
+    };
+
+    private readonly List<XMessageItem> Messages = new()
+    {
+        new XMessageItem { Role = XMessageRole.Assistant, Header = "Element X", Content = "已建立 Blazor X 组件线，下一步会围绕 Sender、附件和流式服务推进。", Footer = "09:30", AvatarIcon = "cpu" },
+        new XMessageItem { Role = XMessageRole.User, Header = "You", Content = "演示必须离线可运行，不能引入 Vue 或第三方 UI。", Footer = "09:31", AvatarText = "U" },
+        new XMessageItem
+        {
+            Role = XMessageRole.Assistant,
+            Header = "Element X",
+            Content = "收到。当前 demo 使用本地集合模拟会话和消息，后续真实接口只作为可选增强项。",
+            Footer = "09:32",
+            AvatarIcon = "chat-dot-round",
+            Attachments = new[]
+            {
+                new XAttachmentItem { FileName = "guardrails.md", Size = "2 KB", Type = "code", Status = XAttachmentStatus.Success }
+            }
+        }
+    };
+
+    private readonly List<XThoughtItem> Thoughts = new()
+    {
+        new XThoughtItem { Title = "锁定依赖边界", Description = "只使用 Element-Blazor 和 Blazor 基础能力。", Duration = "0.2s", Status = "done", Type = "success", Icon = "check" },
+        new XThoughtItem { Title = "拆分组件矩阵", Description = "展示、输入、附件、流式服务分阶段交付。", Duration = "0.6s", Status = "done", Type = "success", Icon = "tickets" },
+        new XThoughtItem { Title = "构建离线演示", Description = "默认模拟会话和响应，不依赖真实后端。", Duration = "1.2s", Status = "running", Type = "primary", Icon = "loading" }
+    };
+
+    private void OnConversationChanged(string id)
+    {
+        ActiveConversationId = id;
+    }
+
+    private void UsePrompt(XPromptItem item)
+    {
+        Draft = item.Description;
+    }
+
+    private async Task SendAsync(string value)
+    {
+        Sending = true;
+        Thinking = true;
+        Messages.Add(new XMessageItem { Role = XMessageRole.User, Header = "You", Content = value, Footer = "sending" });
+        await Task.Delay(200);
+        Messages.Add(new XMessageItem { Role = XMessageRole.Assistant, Header = "Element X", Content = "这是本地模拟回复：后续会接入 ElementXStreamService 形成真正的流式输出。", Footer = "mock", AvatarIcon = "cpu" });
+        Sending = false;
+        Thinking = false;
+    }
+
+    private Task StopAsync()
+    {
+        Sending = false;
+        Thinking = false;
+        return Task.CompletedTask;
+    }
+}

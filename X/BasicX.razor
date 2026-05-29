@@ -1,0 +1,75 @@
+@inherits ElementComponentBase
+
+<section class="x-demo">
+    <ElXWelcome Title="Element-Blazor X"
+                Description="AI 场景组件使用现有 Element-Blazor 控件组合实现，适合聊天、提示词、会话和思考过程展示。"
+                Icon="magic-stick">
+        <Actions>
+            <ElButton Type="@ButtonType.Primary">开始对话</ElButton>
+            <ElButton Plain="true">查看路线</ElButton>
+        </Actions>
+    </ElXWelcome>
+
+    <ElXPrompts Items="@Prompts" OnSelect="OnPromptSelect" />
+
+    <ElXBubbleList Items="@Messages" />
+</section>
+
+<style>
+    .x-demo {
+        display: grid;
+        gap: 18px;
+    }
+</style>
+
+@code {
+    private readonly List<XPromptItem> Prompts = new()
+    {
+        new XPromptItem { Id = "plan", Title = "生成路线", Description = "把 Element Plus X 复刻拆成可验收阶段", Icon = "tickets", Tag = "Plan" },
+        new XPromptItem { Id = "demo", Title = "搭建演示", Description = "用 ElX 组件组合 AI 工作台", Icon = "monitor", Tag = "Demo" },
+        new XPromptItem { Id = "test", Title = "补充测试", Description = "为交互组件添加 bUnit 覆盖", Icon = "circle-check", Tag = "Test" }
+    };
+
+    private readonly List<XMessageItem> Messages = new()
+    {
+        new XMessageItem
+        {
+            Role = XMessageRole.Assistant,
+            Header = "Element X",
+            Content = "你好，我可以帮助你把 AI 组件、聊天体验和文档站风格统一到 Blazor 实现里。",
+            Footer = "ready",
+            AvatarIcon = "magic-stick"
+        },
+        new XMessageItem
+        {
+            Role = XMessageRole.User,
+            Header = "You",
+            Content = "先给我一个不依赖 Vue 的组件组合。",
+            Footer = "now",
+            AvatarText = "U"
+        },
+        new XMessageItem
+        {
+            Role = XMessageRole.Assistant,
+            Header = "Element X",
+            Content = "已使用 ElXWelcome、ElXPrompts、ElXBubbleList、ElXBubble 和 ElXFilesCard 组成第一批展示能力。",
+            Footer = "complete",
+            AvatarIcon = "chat-dot-round",
+            Attachments = new[]
+            {
+                new XAttachmentItem { FileName = "x-component-roadmap.md", Size = "8 KB", Type = "code", Status = XAttachmentStatus.Success }
+            }
+        }
+    };
+
+    private void OnPromptSelect(XPromptItem item)
+    {
+        Messages.Add(new XMessageItem
+        {
+            Role = XMessageRole.User,
+            Header = "Prompt",
+            Content = item.Title,
+            Footer = "selected"
+        });
+    }
+}
