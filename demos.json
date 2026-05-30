@@ -22,6 +22,13 @@
         ]
       },
       {
+        "title": "完整矩阵示例",
+        "name": "X",
+        "files": [
+          "FullX.razor"
+        ]
+      },
+      {
         "title": "AI 工作台演示",
         "name": "X",
         "files": [

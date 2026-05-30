@@ -2,15 +2,42 @@
 @using Element.ClientRender.Model
 
 <section class="overview-page">
+    <section class="docs-hero">
+        <div class="docs-hero__content">
+            <span class="doc-page__category">Element Plus @ComponentDocCatalog.ElementPlusVersion</span>
+            <h1>Element-Blazor</h1>
+            <p>面向 .NET 10 的 Element Plus 风格 Blazor 组件库，主组件矩阵和 Element.X AI 场景矩阵已经完成首轮闭环。</p>
+            <div class="docs-hero__actions">
+                <NavLink class="docs-hero__button is-primary" href="/x">查看 X 组件</NavLink>
+                <NavLink class="docs-hero__button" href="/button">浏览组件</NavLink>
+            </div>
+        </div>
+        <div class="docs-hero__panel" aria-label="X matrix status">
+            <div class="docs-search-box">
+                <ElIcon Name="search" />
+                <span>搜索组件 / 服务 / API</span>
+                <kbd>Ctrl K</kbd>
+            </div>
+            <div class="docs-hero__matrix">
+                <span>ElXBubbleList</span>
+                <span>ElXConversations</span>
+                <span>ElXAttachments</span>
+                <span>ElXSender</span>
+                <span>ElXMentionSender</span>
+                <span>ElementXRequestService</span>
+            </div>
+        </div>
+    </section>
+
     <div class="overview-head">
         <div>
             <span class="doc-page__category">Components</span>
-            <h1>组件总览</h1>
-            <p>Element-Blazor 文档站骨架按 Element Plus 分类组织，组件示例统一展示 <code>El*</code> 控件名。</p>
+            <h2>组件总览</h2>
+            <p>文档站按 Element Plus 分类组织，组件示例统一展示 <code>El*</code> 控件名，并包含 Element.X 的完整矩阵示例。</p>
         </div>
         <div class="overview-meta">
-            <span>Element Plus @ComponentDocCatalog.ElementPlusVersion</span>
             <span>Element-Blazor @ComponentDocCatalog.ElementBlazorVersion</span>
+            <span>Element.X matrix complete</span>
         </div>
     </div>
 
@@ -26,6 +53,10 @@
         <div>
             <strong>El*</strong>
             <span>示例命名</span>
+        </div>
+        <div>
+            <strong>X3</strong>
+            <span>流式服务</span>
         </div>
     </div>
 

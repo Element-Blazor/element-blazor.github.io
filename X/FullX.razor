@@ -1,0 +1,221 @@
+@inherits ElementComponentBase
+@inject ElementXStreamService StreamService
+@inject ElementXRecordService RecordService
+
+<section class="x-full-demo">
+    <div class="x-full-demo__toolbar">
+        <ElButton Type="@ButtonType.Primary" Plain="true" OnClick="RunStreamAsync">流式服务</ElButton>
+        <ElButton Plain="true" OnClick="CheckRecordAsync">录音探测</ElButton>
+        <span>@ServiceState</span>
+    </div>
+
+    <ElXWelcome Title="完整 X 组件矩阵"
+                Description="展示 Element.X 首轮矩阵的组件、事件和服务入口。"
+                Icon="magic-stick">
+        <Actions>
+            <ElButton Type="@ButtonType.Primary" Plain="true">组件</ElButton>
+            <ElButton Plain="true">服务</ElButton>
+        </Actions>
+        <ChildContent>
+            <ElXTypewriter Content="Typewriter 可以用于流式输出和欢迎页动态文案。" Speed="8" />
+        </ChildContent>
+    </ElXWelcome>
+
+    <div class="x-full-demo__grid">
+        <section>
+            <h3>会话与提示词</h3>
+            <ElXConversations Items="@Conversations"
+                              ActiveId="@ActiveConversationId"
+                              ActiveIdChanged="value => ActiveConversationId = value"
+                              ShowCreate="true"
+                              ShowActions="true"
+                              CreateInline="true"
+                              RenameInline="true"
+                              DeleteRemovesItem="true" />
+            <ElXPrompts Items="@Prompts" OnSelect="UsePrompt" Vertical="true" />
+        </section>
+
+        <section>
+            <h3>消息与思考</h3>
+            <ElXBubbleList Items="@Messages" MaxHeight="360" LockAutoScrollWhenUserScrolls="true" />
+            <ElXThinking Title="模型思考" Content="检索组件矩阵、生成流式响应、更新会话上下文。" Duration="1.4s" Loading="@Thinking" />
+            <ElXThoughtChain Items="@Thoughts" />
+        </section>
+    </div>
+
+    <section>
+        <h3>附件与输入</h3>
+        <div class="x-full-demo__attachments">
+            <ElXFilesCard File="@StandaloneFile" OnPreview="PreviewFile" OnRemove="RemoveFile" />
+            <ElXAttachments Items="@Attachments"
+                            ItemsChanged="items => Attachments = items.ToList()"
+                            Drag="true"
+                            AutoUpload="false"
+                            UploadText="选择附件" />
+        </div>
+        <ElXMentionSender Value="@CommandDraft"
+                          ValueChanged="value => CommandDraft = value"
+                          Options="@CommandOptions"
+                          Prefixes="@MentionPrefixes"
+                          ApplyCommandOnSelect="true"
+                          ShowClearButton="true"
+                          SubmitOnEnter="false"
+                          SubmitOnCtrlEnter="true"
+                          OnSubmit="SubmitCommand"
+                          HelpText="输入 / 或 # 选择指令，Ctrl+Enter 提交。" />
+        <ElXSender Value="@Draft"
+                   ValueChanged="value => Draft = value"
+                   OnSubmit="SubmitMessage"
+                   ShowClearButton="true"
+                   SubmitOnEnter="true"
+                   Placeholder="普通消息输入" />
+    </section>
+</section>
+
+<style>
+    .x-full-demo {
+        display: grid;
+        gap: 18px;
+    }
+
+    .x-full-demo__toolbar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--el-text-color-secondary);
+        font-size: 13px;
+    }
+
+    .x-full-demo__grid {
+        display: grid;
+        grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .x-full-demo section {
+        display: grid;
+        gap: 14px;
+        min-width: 0;
+    }
+
+    .x-full-demo h3 {
+        margin: 0;
+        color: var(--el-text-color-primary);
+        font-size: 16px;
+    }
+
+    .x-full-demo__attachments {
+        display: grid;
+        grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    @@media (max-width: 920px) {
+        .x-full-demo__grid,
+        .x-full-demo__attachments {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+@code {
+    private string ActiveConversationId = "matrix";
+    private string Draft = "补齐 X 组件矩阵";
+    private string CommandDraft = "/summarize ";
+    private string ServiceState = "服务待命";
+    private bool Thinking = true;
+
+    private readonly List<XConversationItem> Conversations = new()
+    {
+        new XConversationItem { Id = "matrix", Title = "组件矩阵", Description = "全部组件与服务入口", Group = "Today", Pinned = true },
+        new XConversationItem { Id = "service", Title = "服务层", Description = "stream/request/record", Group = "Today" }
+    };
+
+    private readonly List<XPromptItem> Prompts = new()
+    {
+        new XPromptItem { Id = "summary", Title = "总结矩阵", Description = "列出已完成能力", Icon = "document" },
+        new XPromptItem { Id = "tests", Title = "检查测试", Description = "运行组件与服务测试", Icon = "circle-check" }
+    };
+
+    private readonly List<XMessageItem> Messages = new()
+    {
+        new XMessageItem { Role = XMessageRole.Assistant, Header = "Element X", Content = "BubbleList 支持自动滚动、用户滚动锁定和流式更新。", Footer = "ready", AvatarIcon = "cpu" },
+        new XMessageItem { Role = XMessageRole.User, Header = "You", Content = "把完整矩阵示例放到文档页。", Footer = "now", AvatarText = "U" }
+    };
+
+    private readonly List<XThoughtItem> Thoughts = new()
+    {
+        new XThoughtItem { Title = "组件", Description = "展示、输入、附件和思考组件已可组合。", Duration = "0.5s", Status = "done", Type = "success", Icon = "check" },
+        new XThoughtItem { Title = "服务", Description = "Stream、Request、Record 提供离线优先入口。", Duration = "0.7s", Status = "done", Type = "primary", Icon = "connection" }
+    };
+
+    private List<XAttachmentItem> Attachments = new()
+    {
+        new XAttachmentItem { Id = "api", FileName = "ElementXRequestService.cs", Size = "5 KB", Type = "code", Status = XAttachmentStatus.Success }
+    };
+
+    private readonly XAttachmentItem StandaloneFile = new()
+    {
+        Id = "matrix-card",
+        FileName = "component-matrix.md",
+        Size = "12 KB",
+        Type = "code",
+        Status = XAttachmentStatus.Uploading,
+        Progress = 72
+    };
+
+    private readonly IEnumerable<MentionOption> CommandOptions = new[]
+    {
+        new MentionOption { Value = "summarize", Label = "Summarize" },
+        new MentionOption { Value = "implement", Label = "Implement" }
+    };
+
+    private readonly IEnumerable<string> MentionPrefixes = new[] { "/", "#" };
+
+    private void UsePrompt(XPromptItem item)
+    {
+        Draft = item.Description;
+        Messages.Add(new XMessageItem { Role = XMessageRole.User, Header = "Prompt", Content = item.Title, Footer = "selected" });
+    }
+
+    private async Task RunStreamAsync(MouseEventArgs args)
+    {
+        var content = await StreamService.CollectAsync(StreamService.StreamAsync(new XStreamRequest
+        {
+            Prompt = "文档站流式示例",
+            ResponseText = "流式服务已返回示例内容。",
+            ChunkDelay = TimeSpan.Zero
+        }));
+        ServiceState = content;
+        Thinking = false;
+    }
+
+    private async Task CheckRecordAsync(MouseEventArgs args)
+    {
+        ServiceState = await RecordService.IsSupportedAsync()
+            ? "浏览器支持录音"
+            : "当前环境使用录音降级结果";
+    }
+
+    private void PreviewFile(XAttachmentItem item)
+    {
+        ServiceState = $"预览 {item.FileName}";
+    }
+
+    private void RemoveFile(XAttachmentItem item)
+    {
+        ServiceState = $"移除 {item.FileName}";
+    }
+
+    private Task SubmitCommand(string value)
+    {
+        Messages.Add(new XMessageItem { Role = XMessageRole.User, Header = "Command", Content = value, Footer = "sent" });
+        return Task.CompletedTask;
+    }
+
+    private Task SubmitMessage(string value)
+    {
+        Messages.Add(new XMessageItem { Role = XMessageRole.User, Header = "You", Content = value, Footer = "sent" });
+        return Task.CompletedTask;
+    }
+}

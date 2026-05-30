@@ -1,9 +1,20 @@
 @inherits ElementComponentBase
+@inject ElementXRequestService RequestService
 
 <section class="x-ai-demo">
     <aside class="x-ai-demo__aside">
-        <ElButton Type="@ButtonType.Primary" Icon="el-icon-plus" Style="width:100%;">新建会话</ElButton>
-        <ElXConversations Items="@Conversations" ActiveId="@ActiveConversationId" ActiveIdChanged="OnConversationChanged" />
+        <ElXConversations Items="@Conversations"
+                          ItemsChanged="OnConversationsChanged"
+                          ActiveId="@ActiveConversationId"
+                          ActiveIdChanged="OnConversationChanged"
+                          ShowCreate="true"
+                          ShowActions="true"
+                          CreateInline="true"
+                          RenameInline="true"
+                          DeleteRemovesItem="true"
+                          OnCreateConversation="OnConversationCreated"
+                          OnRenameConversation="OnConversationRenamed"
+                          OnDeleteConversation="OnConversationDeleted" />
     </aside>
 
     <main class="x-ai-demo__main">
@@ -18,7 +29,10 @@
 
         <ElXPrompts Items="@Prompts" OnSelect="UsePrompt" />
 
-        <ElXBubbleList Items="@Messages" Style="min-height:360px;" />
+        <ElXBubbleList Items="@Messages"
+                       AutoScrollOnStreaming="true"
+                       LockAutoScrollWhenUserScrolls="true"
+                       Style="min-height:360px;max-height:460px;" />
 
         <ElXThinking Title="模型思考"
                      Duration="1.2s"
@@ -27,17 +41,28 @@
 
         <ElXThoughtChain Items="@Thoughts" />
 
+        <ElXAttachments Items="@Attachments"
+                        ItemsChanged="items => Attachments = items.ToList()"
+                        Drag="true"
+                        AutoUpload="false"
+                        UploadText="添加附件"
+                        EmptyContent="@EmptyAttachmentContent" />
+
         <ElXSender Value="@Draft"
                    ValueChanged="value => Draft = value"
                    OnSubmit="SendAsync"
                    OnStop="StopAsync"
                    Loading="@Sending"
+                   ShowClearButton="true"
+                   ClearOnSubmit="true"
+                   SubmitOnEnter="true"
+                   SubmitOnShiftEnter="false"
+                   HelpText="Enter 发送，Shift+Enter 换行；停止会取消当前流式请求。"
                    Placeholder="输入消息，Enter 发送，Shift+Enter 换行">
             <Prefix>
                 <ElIcon Name="chat-line-round" />
             </Prefix>
             <Footer>
-                <ElButton Text="true" Icon="el-icon-paperclip">附件</ElButton>
                 <ElButton Text="true" Icon="el-icon-magic-stick">优化</ElButton>
             </Footer>
         </ElXSender>
@@ -85,8 +110,9 @@
     private string Draft = "请继续实现 Sender 和附件上传。";
     private bool Sending;
     private bool Thinking = true;
+    private string activeRequestId;
 
-    private readonly List<XConversationItem> Conversations = new()
+    private List<XConversationItem> Conversations = new()
     {
         new XConversationItem { Id = "roadmap", Title = "X 组件路线", Description = "组件矩阵与防偏约束", Group = "Today", Pinned = true },
         new XConversationItem { Id = "demo", Title = "AI 工作台", Description = "ruoyi-element-ai 复刻", Group = "Today" },
@@ -118,6 +144,11 @@
         }
     };
 
+    private List<XAttachmentItem> Attachments = new()
+    {
+        new XAttachmentItem { Id = "roadmap", FileName = "x-component-roadmap.md", Size = "9 KB", Type = "code", Status = XAttachmentStatus.Success }
+    };
+
     private readonly List<XThoughtItem> Thoughts = new()
     {
         new XThoughtItem { Title = "锁定依赖边界", Description = "只使用 Element-Blazor 和 Blazor 基础能力。", Duration = "0.2s", Status = "done", Type = "success", Icon = "check" },
@@ -125,9 +156,48 @@
         new XThoughtItem { Title = "构建离线演示", Description = "默认模拟会话和响应，不依赖真实后端。", Duration = "1.2s", Status = "running", Type = "primary", Icon = "loading" }
     };
 
+    private RenderFragment EmptyAttachmentContent => builder =>
+    {
+        builder.OpenElement(0, "span");
+        builder.AddContent(1, "可拖拽文件到这里，演示默认离线保存附件列表。");
+        builder.CloseElement();
+    };
+
     private void OnConversationChanged(string id)
     {
         ActiveConversationId = id;
+    }
+
+    private void OnConversationsChanged(IEnumerable<XConversationItem> items)
+    {
+        Conversations = items?.ToList() ?? new List<XConversationItem>();
+    }
+
+    private void OnConversationCreated(XConversationCreateEventArgs args)
+    {
+        if (args?.Item == null)
+        {
+            return;
+        }
+
+        args.Item.Group = "Today";
+        args.Item.Description = "新建的本地会话";
+    }
+
+    private void OnConversationRenamed(XConversationRenameEventArgs args)
+    {
+        if (args?.Item != null)
+        {
+            args.Item.Description = "已重命名";
+        }
+    }
+
+    private void OnConversationDeleted(XConversationDeleteEventArgs args)
+    {
+        if (!string.IsNullOrWhiteSpace(args?.NextActiveId))
+        {
+            ActiveConversationId = args.NextActiveId;
+        }
     }
 
     private void UsePrompt(XPromptItem item)
@@ -137,17 +207,64 @@
 
     private async Task SendAsync(string value)
     {
+        if (Sending || string.IsNullOrWhiteSpace(value))
+        {
+            return;
+        }
+
         Sending = true;
         Thinking = true;
-        Messages.Add(new XMessageItem { Role = XMessageRole.User, Header = "You", Content = value, Footer = "sending" });
-        await Task.Delay(200);
-        Messages.Add(new XMessageItem { Role = XMessageRole.Assistant, Header = "Element X", Content = "这是本地模拟回复：后续会接入 ElementXStreamService 形成真正的流式输出。", Footer = "mock", AvatarIcon = "cpu" });
-        Sending = false;
-        Thinking = false;
+        activeRequestId = Guid.NewGuid().ToString("N");
+        var request = new XRequest
+        {
+            RequestId = activeRequestId,
+            ConversationId = ActiveConversationId,
+            Prompt = value,
+            Messages = Messages.ToList(),
+            Attachments = Attachments.ToList(),
+            UserName = "You",
+            AssistantName = "Element X"
+        };
+
+        Messages.Add(RequestService.CreateUserMessage(request));
+        var assistantMessage = RequestService.CreateAssistantMessage(request);
+        Messages.Add(assistantMessage);
+
+        try
+        {
+            await foreach (var chunk in RequestService.StreamAsync(request))
+            {
+                if (!string.IsNullOrEmpty(chunk.Content))
+                {
+                    assistantMessage.Content += chunk.Content;
+                    assistantMessage.Loading = false;
+                    await InvokeAsync(StateHasChanged);
+                }
+            }
+
+            assistantMessage.Footer = "streamed";
+        }
+        catch (OperationCanceledException)
+        {
+            assistantMessage.Footer = "stopped";
+        }
+        finally
+        {
+            assistantMessage.Loading = false;
+            assistantMessage.Typing = false;
+            Sending = false;
+            Thinking = false;
+            activeRequestId = null;
+        }
     }
 
     private Task StopAsync()
     {
+        if (!string.IsNullOrWhiteSpace(activeRequestId))
+        {
+            RequestService.Cancel(activeRequestId);
+        }
+
         Sending = false;
         Thinking = false;
         return Task.CompletedTask;

@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Element;
 using Element.Lang;
 using Element.Markdown;
+using Element.X;
 using System.Net.Http;
 
 namespace Element.ClientRender
@@ -21,6 +22,7 @@ namespace Element.ClientRender
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddElementServices();
             builder.Services.AddMarkdown();
+            builder.Services.AddElementX();
             await builder.Build().RunAsync();
         }
     }

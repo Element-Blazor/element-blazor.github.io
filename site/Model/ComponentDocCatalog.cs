@@ -24,7 +24,8 @@ namespace Element.ClientRender.Model
                     new[]
                     {
                         Demo("X", "BasicX.razor", "X 组件基础组合", "展示欢迎、提示词、气泡列表和附件卡片。"),
-                        Demo("X", "AiWorkspace.razor", "AI 工作台演示", "使用 ElX* 组件组合离线可运行的 ruoyi-element-ai 演示骨架。")
+                        Demo("X", "FullX.razor", "完整矩阵示例", "覆盖每个 ElX* 组件和 ElementX* 服务入口。"),
+                        Demo("X", "AiWorkspace.razor", "AI 工作台演示", "使用 ElX* 组件和服务层组合离线可运行的 ruoyi-element-ai 演示。")
                     })
             }),
             Category("Basic", "基础组件用于组织页面结构与轻量展示。", new[]
@@ -403,12 +404,23 @@ namespace Element.ClientRender.Model
                     rows.Add(Row("AllowExtensions", "允许的文件扩展名。", "string[]", "-"));
                     break;
                 case "X":
+                    rows.Add(Row("ElXTypewriter.Content", "打字机文本内容。", "string", "-"));
+                    rows.Add(Row("ElXBubble.Role", "消息角色，决定消息方向与视觉状态。", "XMessageRole", "Assistant"));
                     rows.Add(Row("ElXBubbleList.Items", "消息列表数据源。", "IEnumerable<XMessageItem>", "-"));
+                    rows.Add(Row("ElXBubbleList.LockAutoScrollWhenUserScrolls", "用户滚动离开底部时锁定自动滚动。", "bool", "false"));
                     rows.Add(Row("ElXConversations.Items", "会话列表数据源。", "IEnumerable<XConversationItem>", "-"));
+                    rows.Add(Row("ElXConversations.CreateInline/RenameInline", "启用内联新建和重命名。", "bool", "false"));
                     rows.Add(Row("ElXPrompts.Items", "提示词列表数据源。", "IEnumerable<XPromptItem>", "-"));
+                    rows.Add(Row("ElXFilesCard.File", "附件卡片文件模型。", "XAttachmentItem", "-"));
+                    rows.Add(Row("ElXAttachments.Items", "附件列表，映射 ElUpload 状态。", "IList<XAttachmentItem>", "[]"));
                     rows.Add(Row("ElXSender.Value", "输入框内容，支持双向绑定。", "string", "-"));
                     rows.Add(Row("ElXSender.OnSubmit", "发送消息事件。", "EventCallback<string>", "-"));
+                    rows.Add(Row("ElXMentionSender.Options", "指令候选项。", "IEnumerable<MentionOption>", "-"));
+                    rows.Add(Row("ElXThinking.Loading", "思考状态。", "bool", "true"));
                     rows.Add(Row("ElXThoughtChain.Items", "思考链节点。", "IEnumerable<XThoughtItem>", "-"));
+                    rows.Add(Row("ElementXStreamService.StreamAsync", "离线优先流式输出和 SSE 解析入口。", "IAsyncEnumerable<XStreamChunk>", "-"));
+                    rows.Add(Row("ElementXRequestService.StreamAsync", "请求、会话上下文和取消控制入口。", "IAsyncEnumerable<XStreamChunk>", "-"));
+                    rows.Add(Row("ElementXRecordService.StartAsync", "浏览器录音开始入口，支持能力降级。", "Task<XRecordResult>", "-"));
                     break;
                 default:
                     rows.Add(Row("ChildContent", "组件内容或插槽内容。", "RenderFragment", "-"));
@@ -447,7 +459,12 @@ namespace Element.ClientRender.Model
                 case "X":
                     return @"<ElXWelcome Title=""Element-Blazor X"" Description=""AI scene components"" />
 <ElXBubbleList Items=""@messages"" />
-<ElXSender @bind-Value=""draft"" OnSubmit=""SendAsync"" />";
+<ElXMentionSender Options=""@commands"" @bind-Value=""command"" OnSubmit=""SendAsync"" />
+<ElXSender @bind-Value=""draft"" OnSubmit=""SendAsync"" />
+
+@code {
+    [Inject] ElementXRequestService RequestService { get; set; }
+}";
                 case "Button":
                     return @"<ElButton>Default</ElButton>
 <ElButton Type=""@ButtonType.Primary"">Primary</ElButton>
