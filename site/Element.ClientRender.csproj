@@ -4,6 +4,7 @@
 	  <TargetFramework>net10.0</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
     <BlazorCacheBootResources>false</BlazorCacheBootResources>
+    <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,11 +16,13 @@
     <ProjectReference Include="..\demo.csproj" />
     <ProjectReference Include="..\..\src\Components\Element.csproj" Condition="Exists('..\..\src\Components\Element.csproj')" />
     <ProjectReference Include="..\..\src\Markdown\Element.Markdown.csproj" Condition="Exists('..\..\src\Markdown\Element.Markdown.csproj')" />
+    <ProjectReference Include="..\..\src\X\Element.X.csproj" Condition="Exists('..\..\src\X\Element.X.csproj')" />
   </ItemGroup>
 
   <ItemGroup Condition="!Exists('..\..\src\Components\Element.csproj')">
     <PackageReference Include="Element" Version="2.14.0-alpha.1" />
     <PackageReference Include="Element.Markdown" Version="2.14.0-alpha.1" />
+    <PackageReference Include="Element.X" Version="2.14.0-alpha.1" />
   </ItemGroup>
 
   <ItemGroup>

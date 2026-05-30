@@ -230,11 +230,13 @@
 
   <ItemGroup Condition="Exists('..\src\Markdown\Element.Markdown.csproj')">
     <ProjectReference Include="..\src\Markdown\Element.Markdown.csproj" />
+    <ProjectReference Include="..\src\X\Element.X.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="!Exists('..\src\Markdown\Element.Markdown.csproj')">
     <PackageReference Include="Element" Version="2.14.0-alpha.1" />
     <PackageReference Include="Element.Markdown" Version="2.14.0-alpha.1" />
+    <PackageReference Include="Element.X" Version="2.14.0-alpha.1" />
   </ItemGroup>
 
   <ItemGroup>
