@@ -9,6 +9,8 @@
     <base href="/" />
 
     <link href="manifest.json" rel="manifest" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
     <link rel="stylesheet" href="/_content/Element/css/fix.css" />
     <link rel="stylesheet" href="/_content/Element/css/index.css" />
     <link rel="stylesheet" href="/_content/Element/css/theme.css" />
@@ -79,30 +81,15 @@
         }
 
         .boot-mark {
-            position: relative;
-            width: 72px;
-            height: 72px;
+            width: 78px;
+            height: 78px;
             margin-bottom: 22px;
         }
 
-        .boot-mark::before,
-        .boot-mark::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 18px;
-        }
-
-        .boot-mark::before {
-            background: #409eff;
-            box-shadow: 18px 18px 0 #67c23a, 0 18px 0 #e6a23c, 18px 0 0 #79bbff;
-            animation: boot-pulse 1.6s ease-in-out infinite;
-        }
-
-        .boot-mark::after {
-            inset: 14px;
-            border: 3px solid #ffffff;
-            background: rgba(255, 255, 255, 0.18);
+        .boot-mark img {
+            display: block;
+            width: 100%;
+            height: 100%;
         }
 
         .boot-kicker {
@@ -185,16 +172,6 @@
             }
         }
 
-        @keyframes boot-pulse {
-            0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-            }
-            50% {
-                transform: translate(4px, 4px) scale(0.92);
-            }
-        }
-
         @keyframes boot-dot {
             0%,
             80%,
@@ -225,7 +202,9 @@
     <app>
         <div class="boot-screen" role="status" aria-live="polite">
             <div class="boot-panel">
-                <div class="boot-mark" aria-hidden="true"></div>
+                <div class="boot-mark" aria-hidden="true">
+                    <img src="logo-loading.svg" alt="" />
+                </div>
                 <p class="boot-kicker">Element-Blazor Demo</p>
                 <h1 class="boot-title">正在装载浏览器渲染演示</h1>
                 <p class="boot-stage" id="boot-stage">准备 WebAssembly 运行时</p>
