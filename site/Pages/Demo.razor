@@ -1,0 +1,79 @@
+@inherits PageBase
+
+@if (currentDoc == null)
+{
+    <section class="doc-page">
+        <h1>组件未找到</h1>
+        <p class="doc-page__summary">请从左侧组件分类中选择一个组件。</p>
+    </section>
+}
+else
+{
+    <article class="doc-page">
+        <div class="doc-page__header">
+            <div>
+                <span class="doc-page__category">@currentDoc.Category</span>
+                <h1>@currentDoc.ComponentName @currentDoc.Title</h1>
+                <p class="doc-page__summary">@currentDoc.Summary</p>
+            </div>
+            <span class="doc-status">@currentDoc.Status</span>
+        </div>
+
+        <section class="doc-section" id="examples">
+            <h2>示例</h2>
+            @foreach (var demo in demos)
+            {
+                <section class="example-card">
+                    <div class="example-card__header">
+                        <div>
+                            <h3>@demo.Title</h3>
+                            @if (!string.IsNullOrWhiteSpace(demo.Description))
+                            {
+                                <p>@demo.Description</p>
+                            }
+                        </div>
+                        <span>@demo.FileName</span>
+                    </div>
+                    <div class="example-card__preview">
+                        @if (demo.Demo == null)
+                        {
+                            <p class="doc-muted">示例组件暂不可用。</p>
+                        }
+                        else
+                        {
+                            <ElDynamicComponent Component="@demo.Demo"></ElDynamicComponent>
+                        }
+                    </div>
+                    <pre class="code-block"><code>@demo.Code</code></pre>
+                </section>
+            }
+        </section>
+
+        <section class="doc-section" id="api">
+            <h2>API</h2>
+            <div class="api-table-wrap">
+                <table class="api-table">
+                    <thead>
+                        <tr>
+                            <th>属性</th>
+                            <th>说明</th>
+                            <th>类型</th>
+                            <th>默认值</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var row in currentDoc.Api)
+                        {
+                            <tr>
+                                <td><code>@row.Name</code></td>
+                                <td>@row.Description</td>
+                                <td><code>@row.Type</code></td>
+                                <td><code>@row.DefaultValue</code></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </article>
+}

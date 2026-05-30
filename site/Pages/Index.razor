@@ -1,0 +1,55 @@
+@page "/"
+@using Element.ClientRender.Model
+
+<section class="overview-page">
+    <div class="overview-head">
+        <div>
+            <span class="doc-page__category">Components</span>
+            <h1>组件总览</h1>
+            <p>Element-Blazor 文档站骨架按 Element Plus 分类组织，组件示例统一展示 <code>El*</code> 控件名。</p>
+        </div>
+        <div class="overview-meta">
+            <span>Element Plus @ComponentDocCatalog.ElementPlusVersion</span>
+            <span>Element-Blazor @ComponentDocCatalog.ElementBlazorVersion</span>
+        </div>
+    </div>
+
+    <div class="overview-stats">
+        <div>
+            <strong>@ComponentDocCatalog.Components.Count</strong>
+            <span>组件</span>
+        </div>
+        <div>
+            <strong>@ComponentDocCatalog.Categories.Count</strong>
+            <span>分类</span>
+        </div>
+        <div>
+            <strong>El*</strong>
+            <span>示例命名</span>
+        </div>
+    </div>
+
+    @foreach (var category in ComponentDocCatalog.Categories)
+    {
+        <section class="overview-category">
+            <div class="overview-category__header">
+                <h2>@category.Name</h2>
+                <p>@category.Description</p>
+            </div>
+            <div class="component-grid">
+                @foreach (var component in category.Components)
+                {
+                    <NavLink class="component-card" href="@component.Route">
+                        <span class="component-card__name">@component.ComponentName</span>
+                        <span class="component-card__title">@component.Title</span>
+                        <span class="component-card__summary">@component.Summary</span>
+                        <span class="component-card__footer">
+                            <span>@component.Demos.Count 示例</span>
+                            <span>@component.Status</span>
+                        </span>
+                    </NavLink>
+                }
+            </div>
+        </section>
+    }
+</section>

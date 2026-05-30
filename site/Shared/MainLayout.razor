@@ -1,0 +1,32 @@
+@inherits LayoutComponentBase
+@using Element.ClientRender.Model
+
+<ElPopup></ElPopup>
+
+<div class="docs-shell">
+    <header class="docs-topbar">
+        <NavLink class="docs-brand" href="/" Match="NavLinkMatch.All">
+            <img class="docs-brand__logo" src="icon-512.png" alt="" />
+            <span>Element-Blazor</span>
+        </NavLink>
+        <nav class="docs-topnav" aria-label="Top navigation">
+            <NavLink href="/" Match="NavLinkMatch.All">组件</NavLink>
+            <NavLink href="/theme">主题</NavLink>
+            <NavLink href="/about">关于</NavLink>
+            <a href="https://github.com/Element-Blazor/Element-Blazor" target="_blank">GitHub</a>
+        </nav>
+        <div class="docs-versions" aria-label="Version labels">
+            <span>Element Plus @ComponentDocCatalog.ElementPlusVersion</span>
+            <span>@ComponentDocCatalog.ElementBlazorVersion</span>
+        </div>
+    </header>
+
+    <div class="docs-main">
+        <aside class="docs-sidebar">
+            <NavMenu></NavMenu>
+        </aside>
+        <main class="docs-content">
+            @Body
+        </main>
+    </div>
+</div>

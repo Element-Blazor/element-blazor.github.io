@@ -1,0 +1,95 @@
+@page "/about"
+@using Element.ClientRender.Model
+@inject HttpClient Http
+
+<section class="about-page">
+    <div class="about-hero">
+        <div>
+            <span class="doc-page__category">About</span>
+            <h1>✨ Element-Blazor</h1>
+            <p>一个对齐 Element Plus 设计语言的 Blazor UI 组件库，让 .NET 团队可以直接使用 Razor 和 WebAssembly 构建现代前端体验。</p>
+            <div class="about-actions">
+                <ElButton Type="@ButtonType.Primary" Tag="a" Href="https://github.com/Element-Blazor/Element-Blazor" Target="_blank" Rel="noopener noreferrer" Icon="el-icon-star-off">GitHub</ElButton>
+                <ElButton Tag="a" Href="https://www.nuget.org/packages/Element/" Target="_blank" Rel="noopener noreferrer" Icon="el-icon-download">NuGet</ElButton>
+                <ElButton Plain="true" Tag="a" Href="/x" Icon="el-icon-chat-dot-round">X 组件</ElButton>
+            </div>
+        </div>
+        <div class="about-hero__panel" aria-label="Project status">
+            <ElTag Type="@TagType.Success" Theme="@TagTheme.Light">📦 Element @nugetStatus.Version</ElTag>
+            <ElTag Type="@TagType.Info" Theme="@TagTheme.Light">⬇️ @nugetStatus.DownloadsText 下载</ElTag>
+            <ElTag Type="@TagType.Warning" Theme="@TagTheme.Light">🧩 Element Plus 2.14</ElTag>
+            <ElTag Type="@TagType.Danger" Theme="@TagTheme.Light">⚡ Browser Render</ElTag>
+        </div>
+    </div>
+
+    <div class="about-grid">
+        <ElCard Shadow="@ShadowShowType.Never" Cls="about-card">
+            <Header>
+                <span>🎯 项目定位</span>
+            </Header>
+            <Body>
+                <p>Element-Blazor 只使用 Blazor 和当前项目内实现的 Element 风格组件，不依赖 Vue、Element Plus 运行时或第三方 UI 组件。</p>
+                <p>演示站会持续承载组件文档、主题能力、X 组件路线图和 AI 场景 demo，用同一套组件验证产品级体验。</p>
+            </Body>
+        </ElCard>
+
+        <ElCard Shadow="@ShadowShowType.Never" Cls="about-card">
+            <Header>
+                <span>🔗 相关地址</span>
+            </Header>
+            <Body>
+                <div class="about-links">
+                    <ElLink Type="@LinkType.Primary" Href="https://element-blazor.github.io/" Target="_blank" Rel="noopener noreferrer" Icon="el-icon-link">演示站</ElLink>
+                    <ElLink Type="@LinkType.Primary" Href="https://github.com/Element-Blazor/Element-Blazor" Target="_blank" Rel="noopener noreferrer" Icon="el-icon-link">GitHub 仓库</ElLink>
+                    <ElLink Type="@LinkType.Primary" Href="https://www.nuget.org/packages/Element/" Target="_blank" Rel="noopener noreferrer" Icon="el-icon-link">Element NuGet 包</ElLink>
+                    <ElLink Type="@LinkType.Primary" Href="https://www.nuget.org/packages/Element.Markdown/" Target="_blank" Rel="noopener noreferrer" Icon="el-icon-link">Element.Markdown NuGet 包</ElLink>
+                    <ElLink Type="@LinkType.Primary" Href="https://element-plus.org/" Target="_blank" Rel="noopener noreferrer" Icon="el-icon-link">Element Plus 设计参考</ElLink>
+                    <ElLink Type="@LinkType.Primary" Href="/x" Icon="el-icon-link">X 组件演示</ElLink>
+                </div>
+            </Body>
+        </ElCard>
+
+        <ElCard Shadow="@ShadowShowType.Never" Cls="about-card about-card--wide">
+            <Header>
+                <span>🛣️ 路线方向</span>
+            </Header>
+            <Body>
+                <div class="about-roadmap">
+                    <div>
+                        <strong>组件优先</strong>
+                        <span>补齐基础组件、反馈组件、数据组件和 X 组件，用现有组件库承载所有 demo。</span>
+                    </div>
+                    <div>
+                        <strong>演示即验收</strong>
+                        <span>演示站首页、主题、AI 工作台和文档页面都作为长期回归入口。</span>
+                    </div>
+                    <div>
+                        <strong>发布自动化</strong>
+                        <span>GitHub Actions 构建浏览器渲染产物，发布到 element-blazor.github.io。</span>
+                    </div>
+                </div>
+            </Body>
+        </ElCard>
+
+        <ElCard Shadow="@ShadowShowType.Never" Cls="about-card about-wecom">
+            <Header>
+                <span>💬 企业微信交流群</span>
+            </Header>
+            <Body>
+                <div class="about-wecom__body">
+                    <img src="images/wecom-qr.jpg" alt="企业微信交流群二维码" />
+                    <p>扫码加入群聊，一起推进 Element-Blazor 的组件、文档和 AI 场景能力。</p>
+                </div>
+            </Body>
+        </ElCard>
+    </div>
+</section>
+
+@code {
+    private NuGetPackageStatus nugetStatus = new NuGetPackageStatus();
+
+    protected override async Task OnInitializedAsync()
+    {
+        nugetStatus = await NuGetPackageStatus.LoadAsync(Http);
+    }
+}

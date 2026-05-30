@@ -1,0 +1,18 @@
+@using Element.ClientRender.Model
+
+<nav class="docs-nav" aria-label="Components">
+    <NavLink class="docs-nav__overview" href="/" Match="NavLinkMatch.All">组件总览</NavLink>
+    @foreach (var category in ComponentDocCatalog.Categories)
+    {
+        <section class="docs-nav__group">
+            <h2>@category.Name</h2>
+            @foreach (var component in category.Components)
+            {
+                <NavLink href="@component.Route">
+                    <span>@component.ComponentName</span>
+                    <small>@component.Title</small>
+                </NavLink>
+            }
+        </section>
+    }
+</nav>

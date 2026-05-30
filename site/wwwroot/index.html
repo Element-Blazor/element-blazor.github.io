@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9">
+    <title>Element-Blazor, Element的Blazor版本，用 .NET 写前端的 UI 框架，开箱即用，WebAssembly 版本，非PWA模式</title>
+    <base href="/" />
+
+    <link href="manifest.json" rel="manifest" />
+    <link rel="stylesheet" href="/_content/Element/css/fix.css" />
+    <link rel="stylesheet" href="/_content/Element/css/index.css" />
+    <link rel="stylesheet" href="/_content/Element/css/theme.css" />
+    <link rel="stylesheet" href="/_content/Element/css/x.css" />
+    <link rel="stylesheet" href="css/docs.css" />
+    <link href="/_content/Element.Markdown/css/editormd.min.css" rel="stylesheet" />
+    <link href="/_content/Element.Markdown/css/editor.css" rel="stylesheet" />
+    <link href="https://cdn.bootcss.com/codemirror/5.48.4/addon/fold/foldgutter.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css" rel="stylesheet">
+    <style>
+        html {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            background-color: #ffffff;
+            font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-weight: 400;
+            font-size: 100%;
+            margin: 0em;
+            display: flex;
+            flex: 1;
+            padding: 0em;
+        }
+
+            body > app {
+                flex: 1;
+                display: flex;
+            }
+
+        .boot-screen {
+            position: relative;
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(64, 158, 255, 0.20), transparent 28%),
+                radial-gradient(circle at 80% 18%, rgba(103, 194, 58, 0.16), transparent 24%),
+                linear-gradient(135deg, #f8fbff 0%, #ffffff 48%, #f6fff9 100%);
+            color: #303133;
+        }
+
+        .boot-screen::before {
+            content: "";
+            position: absolute;
+            width: min(56vw, 520px);
+            aspect-ratio: 1;
+            border: 1px solid rgba(64, 158, 255, 0.20);
+            border-radius: 50%;
+            animation: boot-orbit 8s linear infinite;
+        }
+
+        .boot-panel {
+            position: relative;
+            width: min(86vw, 420px);
+            padding: 34px 34px 30px;
+            border: 1px solid rgba(220, 223, 230, 0.88);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.86);
+            box-shadow: 0 24px 80px rgba(31, 45, 61, 0.12);
+            backdrop-filter: blur(18px);
+        }
+
+        .boot-mark {
+            position: relative;
+            width: 72px;
+            height: 72px;
+            margin-bottom: 22px;
+        }
+
+        .boot-mark::before,
+        .boot-mark::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+        }
+
+        .boot-mark::before {
+            background: #409eff;
+            box-shadow: 18px 18px 0 #67c23a, 0 18px 0 #e6a23c, 18px 0 0 #79bbff;
+            animation: boot-pulse 1.6s ease-in-out infinite;
+        }
+
+        .boot-mark::after {
+            inset: 14px;
+            border: 3px solid #ffffff;
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .boot-kicker {
+            margin: 0 0 8px;
+            color: #409eff;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0;
+        }
+
+        .boot-title {
+            margin: 0;
+            color: #1f2d3d;
+            font-size: 30px;
+            font-weight: 750;
+            line-height: 1.2;
+        }
+
+        .boot-stage {
+            min-height: 22px;
+            margin: 18px 0 16px;
+            color: #606266;
+            font-size: 14px;
+        }
+
+        .boot-progress {
+            height: 8px;
+            overflow: hidden;
+            border-radius: 999px;
+            background: #ebeef5;
+        }
+
+        .boot-progress__bar {
+            display: block;
+            width: 8%;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #409eff, #67c23a);
+            box-shadow: 0 0 22px rgba(64, 158, 255, 0.36);
+            transition: width 0.25s ease;
+        }
+
+        .boot-progress__meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 12px;
+            color: #909399;
+            font-size: 12px;
+        }
+
+        .boot-dots {
+            display: inline-flex;
+            gap: 5px;
+        }
+
+        .boot-dots i {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #409eff;
+            animation: boot-dot 1.2s ease-in-out infinite;
+        }
+
+        .boot-dots i:nth-child(2) {
+            animation-delay: 0.16s;
+        }
+
+        .boot-dots i:nth-child(3) {
+            animation-delay: 0.32s;
+        }
+
+        @keyframes boot-orbit {
+            from {
+                transform: rotate(0deg) scale(1);
+            }
+            to {
+                transform: rotate(360deg) scale(1.04);
+            }
+        }
+
+        @keyframes boot-pulse {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(4px, 4px) scale(0.92);
+            }
+        }
+
+        @keyframes boot-dot {
+            0%,
+            80%,
+            100% {
+                opacity: 0.35;
+                transform: translateY(0);
+            }
+            40% {
+                opacity: 1;
+                transform: translateY(-5px);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .boot-panel {
+                padding: 28px 24px 26px;
+            }
+
+            .boot-title {
+                font-size: 25px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <app>
+        <div class="boot-screen" role="status" aria-live="polite">
+            <div class="boot-panel">
+                <div class="boot-mark" aria-hidden="true"></div>
+                <p class="boot-kicker">Element-Blazor Demo</p>
+                <h1 class="boot-title">正在装载浏览器渲染演示</h1>
+                <p class="boot-stage" id="boot-stage">准备 WebAssembly 运行时</p>
+                <div class="boot-progress" aria-hidden="true">
+                    <span class="boot-progress__bar" id="boot-progress-bar"></span>
+                </div>
+                <div class="boot-progress__meta">
+                    <span id="boot-progress-text">8%</span>
+                    <span class="boot-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                </div>
+            </div>
+        </div>
+    </app>
+    <script src="/_content/Element/js/dom.js"></script>
+    <script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+    <script src="/_content/Element.Markdown/js/addons.min.js"></script>
+    <script src="/_content/Element.Markdown/js/continuelist.js"></script>
+    <script src="/_content/Element.Markdown/js/modes.min.js"></script>
+    <script src="/_content/Element.Markdown/js/dom.js"></script>
+    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
+    <script>
+        (() => {
+            const stage = document.getElementById("boot-stage");
+            const bar = document.getElementById("boot-progress-bar");
+            const text = document.getElementById("boot-progress-text");
+            const stages = {
+                assembly: "加载 Element-Blazor 组件程序集",
+                pdb: "同步调试符号",
+                dotnetjs: "初始化 .NET WebAssembly",
+                dotnetwasm: "装载 WebAssembly 引擎",
+                timezonedata: "准备本地化资源",
+                icudata: "装载全球化数据",
+                configuration: "读取站点配置"
+            };
+            let loaded = 0;
+            let total = 18;
+
+            const update = (percent, message) => {
+                const value = Math.max(8, Math.min(100, Math.round(percent)));
+                if (bar) {
+                    bar.style.width = `${value}%`;
+                }
+                if (text) {
+                    text.textContent = `${value}%`;
+                }
+                if (stage && message) {
+                    stage.textContent = message;
+                }
+            };
+
+            update(8, "准备 WebAssembly 运行时");
+
+            Blazor.start({
+                loadBootResource: (type, name, defaultUri, integrity) => {
+                    loaded += 1;
+                    total = Math.max(total, loaded + 4);
+                    update(12 + (loaded / total) * 76, stages[type] || `加载 ${name || type}`);
+                    return defaultUri;
+                }
+            }).then(() => {
+                update(100, "启动完成");
+            }).catch(error => {
+                update(100, "启动失败，请刷新页面重试");
+                console.error(error);
+            });
+        })();
+    </script>
+
+</body>
+
+</html>
